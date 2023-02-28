@@ -26,7 +26,8 @@ for number in numbers:
         prev_number_is_2 = True
     else:
         prev_number_is_2 = False
-
+# Note - this will print multiple "True's". If only one is required, set a boolean 
+# and outside the loop, do the print based on that
 
 # 4. Print the sum of the numbers, 
 #    BUT ignore any section of numbers starting with a 6 and extending to the next 7.
@@ -34,8 +35,8 @@ for number in numbers:
 #    So [11, 6, 4, 99, 7, 11] would have sum of 22
 number_sum = 0
 sum_flag = True
-# numbers.append(3)
-print(f"Before the loop: {numbers}")
+# numbers.append(3)  #this was for testing. also, I suspect it could be more elegant.
+print(f"Q4: Before the loop: {numbers}")
 for number in numbers:
     if sum_flag:
         if number == 6:
@@ -55,7 +56,7 @@ print (f"The total is  {number_sum}")
 #    So [5, 13, 2] would have sum of 5. 
 q5_total = 0
 i = 0
-print(f"Before the loop: {numbers}")
+print(f"Q5: Before the loop: {numbers}")
 for number in numbers:
     if number == 13 or numbers [i-1] == 13:
         print(f"Ignoring number {number}.")
