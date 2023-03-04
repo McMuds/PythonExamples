@@ -28,6 +28,15 @@ for number in numbers:
         prev_number_is_2 = False
 # Note - this will print multiple "True's". If only one is required, set a boolean 
 # and outside the loop, do the print based on that
+# answer:
+result = False
+index = 0
+for number in numbers:
+    if not(index == 0) and (number == 2 and numbers[index-1] == 2):
+        result = True
+    index += 1
+print(result)
+
 
 # 4. Print the sum of the numbers, 
 #    BUT ignore any section of numbers starting with a 6 and extending to the next 7.
@@ -58,12 +67,9 @@ q5_total = 0
 i = 0
 print(f"Q5: Before the loop: {numbers}")
 for number in numbers:
-    if number == 13 or numbers [i-1] == 13:
+    if (i == 0 and number == 13) or numbers [i-1] == 13:
         print(f"Ignoring number {number}.")
     else:
         q5_total += number
     i += 1
 print(f"The total ignoring 13s and subsequent numbers is {q5_total}.")
-
-
-

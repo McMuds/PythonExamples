@@ -65,6 +65,8 @@ print(f'3b: {users ["Erik"] ["lottery_numbers"]}')
 print("4: " + users ["Avril"] ["pets"] [0] ["species"])
 # 5. Get the smallest of Erik's lottery numbers
 users ["Erik"] ["lottery_numbers"].sort()
+# sorted(users ["Erik"] ["lottery_numbers"])[0]
+# min(users ["Erik"] ["lottery_numbers"])
 print(f'5: {(users ["Erik"] ["lottery_numbers"] [0])}')
 # 6. Return an list of Avril's lottery numbers that are even
 even_lottery = []
@@ -77,14 +79,17 @@ print(f'6: {even_lottery}')
 print(f'7a: {users ["Erik"] ["lottery_numbers"]}')
 users ["Erik"] ["lottery_numbers"].append(7)
 print(f'7b: {users ["Erik"] ["lottery_numbers"]}')
+
 # 8. Change Erik's hometown to Edinburgh
 print(f'8a: {users ["Erik"] ["home_town"]}')
 users ["Erik"] ["home_town"] = "Edinburgh"
 print(f'8b: {users ["Erik"] ["home_town"]}')
+
 # 9. Add a pet dog to Erik called "fluffy"
 print(f'9a: {users ["Erik"] ["pets"]}')
 users["Erik"] ["pets"].append({"name": "fluffy", "species": "dog"})
 print(f'9b: {users ["Erik"] ["pets"]}')
+
 # 10. Add another person to the users dictionary
 users["Claire"] = { 
         "twitter": "no_ta",
