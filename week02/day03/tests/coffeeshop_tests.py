@@ -80,11 +80,15 @@ class CoffeeShopTests(unittest.TestCase):
     def test_can_find_food_by_name__fail(self):
         self.assertEqual(None,self.coffeeshop.find_food(self.food_x))
 
-    def test_coffeeshop_sell_food__pass_age(self):
+    def test_coffeeshop_sell_food__pass(self):
         successful_sale = self.coffeeshop.sell_food(self.food1)
         self.assertEqual(True,successful_sale)    
         self.assertEqual(204.99,self.coffeeshop.till)
         self.assertEqual(1,len(self.coffeeshop.foods))
+
+    def test_coffeeshop_sell_food__fail(self):
+        unsuccessful_sale = self.coffeeshop.sell_food(self.food_x)
+        self.assertEqual(False, unsuccessful_sale)    
 
     def test_return_drink_names(self):
         actual = self.coffeeshop.return_drink_names()
