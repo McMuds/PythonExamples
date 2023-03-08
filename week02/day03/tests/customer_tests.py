@@ -12,7 +12,7 @@ class CustomerTests(unittest.TestCase):
         self.drink = Drink("Mocha", 5.99, 50)
         self.food = Food("Muffin", 2.50, 30)
         self.coffeeshop = CoffeeShop("Tarbucks", 200.0)
-        self.coffeeshop.add_drink(self.drink)
+        self.coffeeshop.add_drink(self.drink, 3)
 
     def test_customer_has_name(self):
         self.assertEqual("Claire",self.customer.name)

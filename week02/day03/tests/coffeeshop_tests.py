@@ -32,7 +32,7 @@ class CoffeeShopTests(unittest.TestCase):
         self.assertEqual(2,len(self.coffeeshop.drinks))
 
     def test_coffeeshop_has_stock(self): #i.e. add_drink worked
-        self.assertEqual(10,self.coffeeshop.stock["Mocha"])
+        self.assertEqual(10,self.coffeeshop.drink_stock["Mocha"])
 
     def test_coffeeshop_has_foods(self): #i.e. add_food worked
         self.assertEqual(2,len(self.coffeeshop.foods))
@@ -95,3 +95,7 @@ class CoffeeShopTests(unittest.TestCase):
         actual = self.coffeeshop.return_affordable_drink_names(self.customer_young)
         expected = ["Latte"]
         self.assertEqual(expected,actual)
+
+    def test_return_stock_value(self):
+        actual = self.coffeeshop.return_stock_value()
+        self.assertEqual(84.85, actual)

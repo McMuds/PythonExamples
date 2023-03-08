@@ -6,9 +6,12 @@ class CoffeeShop:
         self.till = p_till
         self.drinks = []
         self.foods = []
+        self.drink_stock = {}
 
-    def add_drink(self,p_drink):
-        self.drinks.append(p_drink)
+    def add_drink(self, p_drink, p_qty):
+        if p_qty > 0:
+            self.drinks.append(p_drink)
+            self.drink_stock[p_drink.name] = p_qty
 
     def add_food(self,p_food):
         self.foods.append(p_food)
@@ -61,3 +64,9 @@ class CoffeeShop:
         wallet = p_customer.get_wallet()
         result_lc = [drink.name for drink in self.drinks if drink.price <= wallet]
         return result_lc
+    
+    def return_stock_value(self):
+        total_sum = 0
+        for drink in self.drinks:
+            total_sum += (drink.return_price() * self.drink_stock[drink.name])
+        return round(total_sum,2)    #Otherwise the value is 84.85000000000001
