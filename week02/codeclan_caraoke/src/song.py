@@ -3,4 +3,4 @@ class Song:
         self.name = song_name
         self.artist = artist
         self.genre = genre 
-        self.singers = 0
+        self.singers = singers
