@@ -38,7 +38,7 @@ class CoffeeShop:
         energy = p_customer.get_energy()
         drink_exists = (self.find_drink(p_drink) == p_drink)
         if age >= 16 and energy < 50 and drink_exists:
-            self.drinks.remove(p_drink)
+            self.drinks.remove(p_drink) # needs changed for stock
             self.increase_till(p_drink.price)
             return True
         else:
