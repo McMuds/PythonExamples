@@ -13,9 +13,9 @@ class TestRoom(unittest.TestCase):
         self.guest_list = [self.guest1, self.guest2, self.guest3]
         self.song1 = Song("Wichita Lineman", "Glen Campbell", "Country", 1)
         self.song2 = Song("Jolene","Queen Dolly","Country",1)
-        self.room1 = Room(1,[self.guest1],[])
-        self.empty_room = Room(2,[],[])
-        self.busy_room = Room(3,self.guest_list,[self.song1])
+        self.room1 = Room(1,[self.guest1],[],2)
+        self.empty_room = Room(2,[],[],1)
+        self.busy_room = Room(3,self.guest_list,[self.song1],3)
    
     def test_room_has_id(self):
         self.assertEqual(1,self.room1.id)
