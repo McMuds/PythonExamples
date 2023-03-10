@@ -75,3 +75,6 @@ class TestRoom(unittest.TestCase):
         expected = [self.song1, self.song2]
         self.assertEqual(expected,self.room1.songs)
     
+    def test_can_remove_song_from_empty_song_room__fail(self):
+        self.empty_room.remove_song(self.song1)
+        self.assertEqual([],self.empty_room.songs)
