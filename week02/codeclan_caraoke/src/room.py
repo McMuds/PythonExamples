@@ -10,6 +10,7 @@ class Room:
         if len(self.guests) < self._room_size and \
         self._room_cost <= new_guest.wallet:
             self.guests.append(new_guest)
+            new_guest.decrease_wallet(self._room_cost)
             return True
         return False
 
