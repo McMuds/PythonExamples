@@ -7,7 +7,8 @@ class Room:
         self._room_cost = 15 #default room cost
 
     def add_guest_to_room(self,new_guest):
-        if len(self.guests) < self._room_size:
+        if len(self.guests) < self._room_size and \
+        self._room_cost <= new_guest.wallet:
             self.guests.append(new_guest)
             return True
         return False

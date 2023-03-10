@@ -91,3 +91,8 @@ class TestRoom(unittest.TestCase):
     def test_can_set_room_cost(self):
         self.empty_room.set_room_cost(10)
         self.assertEqual(10,self.empty_room._room_cost)
+
+    def test_add_guest_to_expensive_room__fail(self):
+        self.empty_room.set_room_cost(100)
+        result = self.empty_room.add_guest_to_room(self.guest2)
+        self.assertEqual(False,result)
