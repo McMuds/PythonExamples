@@ -4,6 +4,7 @@ class Room:
         self.guests = guests
         self.songs = songs
         self._room_size = 3 #default room size.
+        self._room_cost = 15 #default room cost
 
     def add_guest_to_room(self,new_guest):
         if len(self.guests) < self._room_size:
@@ -26,3 +27,6 @@ class Room:
 
     def set_room_size(self, size):
         self._room_size = size
+   
+    def set_room_cost(self, cost):
+        self._room_cost = cost
