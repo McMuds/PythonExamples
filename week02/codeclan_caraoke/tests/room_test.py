@@ -44,3 +44,8 @@ class TestRoom(unittest.TestCase):
         self.busy_room.remove_guest(self.guest2)
         expected = [self.guest1,self.guest3]
         self.assertEqual(expected,self.busy_room.guests)
+
+    def test_can_remove_guest_from_busy_room__guest_not_in_room(self):
+        self.busy_room.remove_guest(self.guest4)
+        expected = [self.guest1,self.guest2, self.guest3]
+        self.assertEqual(expected,self.busy_room.guests)

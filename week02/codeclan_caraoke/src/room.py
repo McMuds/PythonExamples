@@ -11,4 +11,6 @@ class Room:
         self.songs.append(song)
 
     def remove_guest(self,guest):
-        self.guests.remove(guest)
+        # design decision here - it won't return a message, it'll just handle it.
+        if guest in self.guests:
+            self.guests.remove(guest)
