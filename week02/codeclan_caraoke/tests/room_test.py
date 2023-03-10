@@ -63,6 +63,15 @@ class TestRoom(unittest.TestCase):
     def test_can_remove_song_from_busy_song_room(self):
         self.room1.add_song_to_room(self.song1)
         self.room1.add_song_to_room(self.song2)
-        self.busy_room.remove_songs(self.song2)
+        self.busy_room.remove_song(self.song2)
         expected = [self.song1]
         self.assertEqual(expected,self.busy_room.songs)
+
+    def test_can_remove_song_from_busy_song_room__song_not_in_room(self):
+        self.room1.add_song_to_room(self.song1)
+        self.room1.add_song_to_room(self.song2)
+        song3 = Song("Come What May","Moulin Rouge","Musical",2)
+        self.room1.remove_song(song3)
+        expected = [self.song1, self.song2]
+        self.assertEqual(expected,self.room1.songs)
+    
