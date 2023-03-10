@@ -13,3 +13,8 @@ class TestRoom(unittest.TestCase):
 
     def test_room_has_guest(self):
         self.assertEqual(self.room1.guest,self.room1.guest)
+
+    def test_can_create_empty_room(self):
+        empty_room = Room(2,[])
+        self.assertEqual([],empty_room.guest)
+
