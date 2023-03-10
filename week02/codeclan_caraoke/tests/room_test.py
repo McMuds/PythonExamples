@@ -79,6 +79,7 @@ class TestRoom(unittest.TestCase):
         self.empty_room.remove_song(self.song1)
         self.assertEqual([],self.empty_room.songs)
 
+    # Extensions
     def test_can_set_room_size(self):
         self.empty_room.set_room_size(1)
         self.assertEqual(1,self.empty_room._room_size)
@@ -96,3 +97,14 @@ class TestRoom(unittest.TestCase):
         self.empty_room.set_room_cost(100)
         result = self.empty_room.add_guest_to_room(self.guest2)
         self.assertEqual(False,result)
+
+    # Advanced Extensions ideas:
+    # Play a song
+    # ensure there's the right number of guests for the song
+    # favourite_track
+    # add drinks class
+    # add alcoholic_drinks & age to guest (dictionary?)
+    # customer can buy a drink?
+    # young guests can buy non-alcoholic drinks?
+    # separate room for younger guests?
+    

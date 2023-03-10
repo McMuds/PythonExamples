@@ -3,4 +3,4 @@ class Song:
         self.name = song_name
         self.artist = artist
         self.genre = genre 
-        self.singers = singers
+        self.singers = singers #the idea is to require this many guests in a room.
