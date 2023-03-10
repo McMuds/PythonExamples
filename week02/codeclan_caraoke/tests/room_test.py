@@ -6,10 +6,10 @@ from src.song import Song
 class TestRoom(unittest.TestCase):
     
     def setUp(self):
-        self.guest1 = Guest("Claire")
-        self.guest2 = Guest("Mar")
-        self.guest3 = Guest("Toby")
-        self.guest4 = Guest("Alex")
+        self.guest1 = Guest("Claire",10.0)
+        self.guest2 = Guest("Mar",50)
+        self.guest3 = Guest("Toby",50)
+        self.guest4 = Guest("Alex",50)
         self.guest_list = [self.guest1, self.guest2, self.guest3]
         self.song1 = Song("Wichita Lineman", "Glen Campbell", "Country", 1)
         self.song2 = Song("Jolene","Queen Dolly","Country",1)
