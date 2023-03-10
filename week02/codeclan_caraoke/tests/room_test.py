@@ -82,3 +82,8 @@ class TestRoom(unittest.TestCase):
     def test_can_set_room_size(self):
         self.empty_room.set_room_size(1)
         self.assertEqual(1,self.empty_room._room_size)
+
+    def test_add_guest_to_full_room__fail(self):
+        self.empty_room.set_room_size(0)
+        result = self.empty_room.add_guest_to_room(self.guest2)
+        self.assertEqual(False,result)

@@ -3,10 +3,13 @@ class Room:
         self.id = id
         self.guests = guests
         self.songs = songs
-        self._room_size = 3
+        self._room_size = 3 #default room size.
 
     def add_guest_to_room(self,new_guest):
-        self.guests.append(new_guest)
+        if len(self.guests) < self._room_size:
+            self.guests.append(new_guest)
+            return True
+        return False
 
     def add_song_to_room(self,song):
         self.songs.append(song)
