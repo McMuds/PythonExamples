@@ -14,3 +14,8 @@ class Room:
         # design decision here - it won't return a message, it'll just handle it.
         if guest in self.guests:
             self.guests.remove(guest)
+
+    def remove_song(self,song):
+        # design decision here - it won't return a message, it'll just handle it.
+        if song in self.songs:
+            self.songs.remove(song)
