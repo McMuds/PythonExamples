@@ -10,18 +10,22 @@ class TestRoom(unittest.TestCase):
         self.guest3 = Guest("Toby")
         self.guest4 = Guest("Alex")
         self.guest_list = [self.guest1, self.guest2, self.guest3]
-        self.room1 = Room(1,self.guest1)
+        self.room1 = Room(1,[self.guest1])
+        self.empty_room = Room(2,[])
 
     def test_room_has_id(self):
         self.assertEqual(1,self.room1.id)
 
     def test_room_has_guest(self):
-        self.assertEqual(self.room1.guest,self.room1.guest)
+        self.assertEqual([self.guest1],self.room1.guests)
 
     def test_can_create_empty_room(self):
-        empty_room = Room(2,[])
-        self.assertEqual([],empty_room.guest)
+        self.assertEqual([],self.empty_room.guests)
 
     def test_can_create_busy_room(self):
         busy_room = Room(3,self.guest_list)
-        self.assertEqual(3,len(busy_room.guest))
+        self.assertEqual(3,len(busy_room.guests))
+
+    def test_can_add_guest_to_room(self):
+        self.room1.add_guest_to_room(self.guest4)
+        self.assertEqual(2,len(self.room1.guests))
