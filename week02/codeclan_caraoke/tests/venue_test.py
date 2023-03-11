@@ -11,8 +11,10 @@ class TestVenue(unittest.TestCase):
         self.poproom = Room(1,[],[],"pop")
         self.guest1 = Guest("Katie Perry", 50, 35)
         self.guest2 = Guest("Edith Piaf",100, 100)
+        self.baby_guest = Guest("Emma Bunton",1000, 14)
         self.raproom = Room(2,[self.guest2],[],"Rap")
         self.drink1 = Drink("Beer",4.0,3.50)
+        self.drink2 = Drink("Chocolate Milk",0,2.99)
 
     def test_venue_has_name(self):
         self.assertEqual("Karaoke Karnage",self.venue1.name)
@@ -72,11 +74,10 @@ class TestVenue(unittest.TestCase):
 
     #Advanced idea: Venue has lower age limit
     def test_guest_check_in__fail_too_young(self):
-        baby_guest = Guest("Emma Bunton",1000, 14)
-        self.venue1.check_guest_in(self.poproom,baby_guest)
+        self.venue1.check_guest_in(self.poproom,self.baby_guest)
         self.assertEqual(0,len(self.poproom.guests))
         self.assertEqual(100,self.venue1.till)
-        self.assertEqual(1000,baby_guest.wallet)
+        self.assertEqual(1000,self.baby_guest.wallet)
 
     def test_guest_check_in_exact_age(self):
         baby_guest = Guest("Emma Bunton",1000, 15)
@@ -89,3 +90,31 @@ class TestVenue(unittest.TestCase):
     def test_add_drink_to_venue(self):
         self.venue1.add_drink(self.drink1)
         self.assertEqual(1,len(self.venue1.drinks))
+
+    def test_sell_drink(self):
+        self.venue1.add_drink(self.drink1)
+        self.venue1.sell_drink(self.drink1,self.guest1)
+        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(103.5,self.venue1.till)
+        self.assertEqual(46.50,self.guest1.wallet)
+
+    def test_sell_drink__fail_too_young(self):
+        self.venue1.add_drink(self.drink1)
+        self.venue1.sell_drink(self.drink1,self.baby_guest)
+        self.assertEqual(1,len(self.venue1.drinks))
+        self.assertEqual(100,self.venue1.till)
+        self.assertEqual(1000,self.baby_guest.wallet)
+
+    def test_sell_drink_without_alcohol_babyguest(self):
+        self.venue1.add_drink(self.drink2)
+        self.venue1.sell_drink(self.drink2,self.baby_guest)
+        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(102.99,self.venue1.till)
+        self.assertEqual(997.01,self.baby_guest.wallet)
+
+    def test_sell_drink_without_alcohol_normalguest(self):
+        self.venue1.add_drink(self.drink2)
+        self.venue1.sell_drink(self.drink2,self.guest1)
+        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(102.99,self.venue1.till)
+        self.assertEqual(47.01,self.guest1.wallet)
