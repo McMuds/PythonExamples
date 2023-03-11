@@ -69,3 +69,16 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(100,self.venue1.till)
 
     #Advanced idea: Venue has lower age limit
+    def test_guest_check_in__fail_too_young(self):
+        baby_guest = Guest("Emma Bunton",1000, 14)
+        self.venue1.check_guest_in(self.poproom,baby_guest)
+        self.assertEqual(0,len(self.poproom.guests))
+        self.assertEqual(100,self.venue1.till)
+        self.assertEqual(1000,baby_guest.wallet)
+
+    def test_guest_check_in__fail_correct_age(self):
+        baby_guest = Guest("Emma Bunton",1000, 15)
+        self.venue1.check_guest_in(self.poproom,baby_guest)
+        self.assertEqual(1,len(self.poproom.guests))
+        self.assertEqual(115,self.venue1.till)
+        self.assertEqual(985,baby_guest.wallet)
