@@ -23,3 +23,9 @@ class TestVenue(unittest.TestCase):
     def test_can_add_money_to_till(self):
         self.venue1.add_money_to_till(10)
         self.assertEqual(110,self.venue1.till)
+
+    def test_can_check_guest_in__pass(self):
+        self.venue1.check_guest_in(self.room1, self.guest1)
+        self.assertEqual(35,self.guest1.wallet)
+        self.assertEqual(1,len(self.room1.guests))
+        self.assertEqual(115,self.venue1.till)
