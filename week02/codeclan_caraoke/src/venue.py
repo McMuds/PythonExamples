@@ -4,6 +4,7 @@ class Venue:
         self.name = name
         self.till = till
         self.rooms = [] #blank canvas - have to add rooms
+        self._venue_age_limit = 15
 
     def add_room(self,room_to_add):
         self.rooms.append(room_to_add)    
