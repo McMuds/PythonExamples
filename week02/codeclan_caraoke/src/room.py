@@ -34,3 +34,7 @@ class Room:
    
     def set_room_cost(self, cost):
         self._room_cost = cost
+
+    def play_song(self,song):
+        if len(self.guests) >= song.singers:
+            self.remove_song(song)
