@@ -1,10 +1,11 @@
 class Room:
-    def __init__(self,id,guests, songs):
+    def __init__(self,id,guests, songs, genre):
         self.id = id
         self.guests = guests
         self.songs = songs
         self._room_size = 3 #default room size.
         self._room_cost = 15 #default room cost
+        self.room_style = genre
 
     def add_guest_to_room(self,new_guest):
         if len(self.guests) < self._room_size and \
@@ -15,7 +16,8 @@ class Room:
         return False
 
     def add_song_to_room(self,song):
-        self.songs.append(song)
+        if self.room_style == song.genre:
+            self.songs.append(song)
 
     def remove_guest(self,guest):
         # design decision here - it won't return a message, it'll just handle it.

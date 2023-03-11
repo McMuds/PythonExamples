@@ -7,7 +7,7 @@ class TestVenue(unittest.TestCase):
     
     def setUp(self):
         self.venue1 = Venue("Karaoke Karnage",100.0)
-        self.room1 = Room(1,[],[])
+        self.room1 = Room(1,[],[],"pop")
         self.guest1 = Guest("Katie Perry", 50)
 
     def test_venue_has_name(self):
@@ -43,3 +43,4 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(50,self.guest1.wallet)
         self.assertEqual(0,len(self.room1.guests))
         self.assertEqual(100,self.venue1.till)
+

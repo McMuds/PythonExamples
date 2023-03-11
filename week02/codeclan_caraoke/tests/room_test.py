@@ -13,9 +13,10 @@ class TestRoom(unittest.TestCase):
         self.guest_list = [self.guest1, self.guest2, self.guest3]
         self.song1 = Song("Wichita Lineman", "Glen Campbell", "Country", 1)
         self.song2 = Song("Jolene","Queen Dolly","Country",1)
-        self.room1 = Room(1,[self.guest1],[])
-        self.empty_room = Room(2,[],[])
-        self.busy_room = Room(3,self.guest_list,[self.song1])
+        self.room1 = Room(1,[self.guest1],[],"Country")
+        self.room2 = Room(1,[self.guest1],[],"Pop")
+        self.empty_room = Room(2,[],[],"Rap")
+        self.busy_room = Room(3,self.guest_list,[self.song1],"Country")
    
     def test_room_has_id(self):
         self.assertEqual(1,self.room1.id)
@@ -99,7 +100,17 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(False,result)
 
     # Advanced Extensions ideas:
+    # Room has style - only add songs in that style
+    def test_room_has_style(self):
+        self.assertEqual("Pop",self.room2.room_style)
+
+    def test_cannot_add_incorrect_style_song__fail(self):
+        self.room2.add_song_to_room(self.song1)
+        self.assertEqual(0,len(self.room1.songs))
+
+
     # Play a song
+
     # ensure there's the right number of guests for the song
     # favourite_track
     # add drinks class
@@ -107,4 +118,3 @@ class TestRoom(unittest.TestCase):
     # customer can buy a drink?
     # young guests can buy non-alcoholic drinks?
     # separate room for younger guests?
-    
