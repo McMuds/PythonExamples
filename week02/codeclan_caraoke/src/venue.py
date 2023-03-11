@@ -5,6 +5,7 @@ class Venue:
         self.till = till
         self.rooms = [] #blank canvas - have to add rooms
         self._venue_age_limit = 15
+        self.drinks = []
 
     def add_room(self,room_to_add):
         self.rooms.append(room_to_add)    
@@ -31,3 +32,6 @@ class Venue:
         refund_amount = old_room._room_cost * -1
         guest.decrease_wallet(refund_amount)
         self.add_money_to_till(refund_amount)
+
+    def add_drink(self,drink):
+        self.drinks.append(drink)

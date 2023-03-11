@@ -2,6 +2,7 @@ import unittest
 from src.venue import Venue
 from src.room import Room
 from src.guest import Guest
+from src.drinks import Drink
 
 class TestVenue(unittest.TestCase):
     
@@ -11,6 +12,7 @@ class TestVenue(unittest.TestCase):
         self.guest1 = Guest("Katie Perry", 50, 35)
         self.guest2 = Guest("Edith Piaf",100, 100)
         self.raproom = Room(2,[self.guest2],[],"Rap")
+        self.drink1 = Drink("Beer",4.0,3.50)
 
     def test_venue_has_name(self):
         self.assertEqual("Karaoke Karnage",self.venue1.name)
@@ -76,9 +78,14 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(100,self.venue1.till)
         self.assertEqual(1000,baby_guest.wallet)
 
-    def test_guest_check_in__fail_correct_age(self):
+    def test_guest_check_in_exact_age(self):
         baby_guest = Guest("Emma Bunton",1000, 15)
         self.venue1.check_guest_in(self.poproom,baby_guest)
         self.assertEqual(1,len(self.poproom.guests))
         self.assertEqual(115,self.venue1.till)
         self.assertEqual(985,baby_guest.wallet)
+
+    #Add Drinks/Bar to venue
+    def test_add_drink_to_venue(self):
+        self.venue1.add_drink(self.drink1)
+        self.assertEqual(1,len(self.venue1.drinks))
