@@ -16,5 +16,5 @@ class Venue:
             self.add_money_to_till(room._room_cost)
 
     def transfer_guest(self,guest,old_room,new_room):
-        old_room.remove_guest(guest)
-        self.check_guest_in(new_room,guest)
+        if old_room.remove_guest(guest):
+            self.check_guest_in(new_room,guest)

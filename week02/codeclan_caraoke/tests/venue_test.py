@@ -52,3 +52,10 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(1,len(self.poproom.guests))
         self.assertEqual(85,self.guest2.wallet)
         self.assertEqual(115,self.venue1.till)
+
+    def test_guest_can_swap_rooms__fail_guest_not_in_room(self):
+        self.venue1.transfer_guest(self.guest1,self.raproom,self.poproom)
+        self.assertEqual(1,len(self.raproom.guests))
+        self.assertEqual(0,len(self.poproom.guests))
+        self.assertEqual(100,self.guest2.wallet)
+        self.assertEqual(100,self.venue1.till)
