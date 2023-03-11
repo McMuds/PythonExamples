@@ -118,3 +118,10 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(0,len(self.venue1.drinks))
         self.assertEqual(102.99,self.venue1.till)
         self.assertEqual(47.01,self.guest1.wallet)
+
+    def test_sell_drink__fail_drink_not_available(self):
+        self.venue1.add_drink(self.drink2)
+        self.venue1.sell_drink(self.drink1,self.guest1)
+        self.assertEqual(1,len(self.venue1.drinks))
+        self.assertEqual(100,self.venue1.till)
+        self.assertEqual(50,self.guest1.wallet)

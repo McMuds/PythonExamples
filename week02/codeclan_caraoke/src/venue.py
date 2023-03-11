@@ -37,7 +37,8 @@ class Venue:
         self.drinks.append(drink)
 
     def sell_drink(self,drink,guest):
-        if (guest.age > 18 and drink.abv > 0) or drink.abv == 0: #ignore the law
-            self.drinks.remove(drink)
-            guest.decrease_wallet(drink.price)
-            self.add_money_to_till(drink.price)
+        if drink in self.drinks:
+            if (guest.age > 18 and drink.abv > 0) or drink.abv == 0: #ignore the law
+                self.drinks.remove(drink)
+                guest.decrease_wallet(drink.price)
+                self.add_money_to_till(drink.price)
