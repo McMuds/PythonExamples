@@ -3,15 +3,17 @@ from src.venue import Venue
 from src.room import Room
 from src.guest import Guest
 from src.drinks import Drink
+from src.song import Song
 
 class TestVenue(unittest.TestCase):
     
     def setUp(self):
+        self.song = Song("Angels","Robbie Williams","Pop",1)
         self.venue1 = Venue("Karaoke Karnage",100.0)
         self.poproom = Room(1,[],[],"pop")
-        self.guest1 = Guest("Katie Perry", 50, 35)
-        self.guest2 = Guest("Edith Piaf",100, 100)
-        self.baby_guest = Guest("Emma Bunton",1000, 14)
+        self.guest1 = Guest("Katie Perry", 50, 35,self.song)
+        self.guest2 = Guest("Edith Piaf",100, 100,self.song)
+        self.baby_guest = Guest("Emma Bunton",1000, 14,self.song)
         self.raproom = Room(2,[self.guest2],[],"Rap")
         self.drink1 = Drink("Beer",4.0,3.50)
         self.drink2 = Drink("Chocolate Milk",0,2.99)
@@ -80,7 +82,7 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(1000,self.baby_guest.wallet)
 
     def test_guest_check_in_exact_age(self):
-        baby_guest = Guest("Emma Bunton",1000, 15)
+        baby_guest = Guest("Emma Bunton",1000, 15, self.song)
         self.venue1.check_guest_in(self.poproom,baby_guest)
         self.assertEqual(1,len(self.poproom.guests))
         self.assertEqual(115,self.venue1.till)
@@ -88,40 +90,47 @@ class TestVenue(unittest.TestCase):
 
     #Add Drinks/Bar to venue
     def test_add_drink_to_venue(self):
-        self.venue1.add_drink(self.drink1)
-        self.assertEqual(1,len(self.venue1.drinks))
+        self.venue1.add_drink(self.drink1,10)
+        self.assertEqual(10,self.venue1.drinks[self.drink1])
 
     def test_sell_drink(self):
-        self.venue1.add_drink(self.drink1)
+        self.venue1.add_drink(self.drink1,10)
         self.venue1.sell_drink(self.drink1,self.guest1)
-        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(9,self.venue1.drinks[self.drink1])
         self.assertEqual(103.5,self.venue1.till)
         self.assertEqual(46.50,self.guest1.wallet)
 
     def test_sell_drink__fail_too_young(self):
-        self.venue1.add_drink(self.drink1)
+        self.venue1.add_drink(self.drink1,10)
         self.venue1.sell_drink(self.drink1,self.baby_guest)
-        self.assertEqual(1,len(self.venue1.drinks))
+        self.assertEqual(10,self.venue1.drinks[self.drink1])
         self.assertEqual(100,self.venue1.till)
         self.assertEqual(1000,self.baby_guest.wallet)
 
     def test_sell_drink_without_alcohol_babyguest(self):
-        self.venue1.add_drink(self.drink2)
+        self.venue1.add_drink(self.drink2,10)
         self.venue1.sell_drink(self.drink2,self.baby_guest)
-        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(9,self.venue1.drinks[self.drink2])
         self.assertEqual(102.99,self.venue1.till)
         self.assertEqual(997.01,self.baby_guest.wallet)
 
     def test_sell_drink_without_alcohol_normalguest(self):
-        self.venue1.add_drink(self.drink2)
+        self.venue1.add_drink(self.drink2,10)
         self.venue1.sell_drink(self.drink2,self.guest1)
-        self.assertEqual(0,len(self.venue1.drinks))
+        self.assertEqual(9,self.venue1.drinks[self.drink2])
         self.assertEqual(102.99,self.venue1.till)
         self.assertEqual(47.01,self.guest1.wallet)
 
     def test_sell_drink__fail_drink_not_available(self):
-        self.venue1.add_drink(self.drink2)
-        self.venue1.sell_drink(self.drink1,self.guest1)
-        self.assertEqual(1,len(self.venue1.drinks))
+        self.venue1.add_drink(self.drink1,10)
+        self.venue1.sell_drink(self.drink2,self.guest1)
+        self.assertEqual(10,self.venue1.drinks[self.drink1])
+        self.assertEqual(100,self.venue1.till)
+        self.assertEqual(50,self.guest1.wallet)
+
+    def test_sell_drink__fail_drink_no_stock(self):
+        self.venue1.add_drink(self.drink2,0)
+        self.venue1.sell_drink(self.drink2,self.guest1)
+        self.assertEqual(0,self.venue1.drinks[self.drink2])
         self.assertEqual(100,self.venue1.till)
         self.assertEqual(50,self.guest1.wallet)

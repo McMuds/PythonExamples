@@ -5,7 +5,8 @@ class Venue:
         self.till = till
         self.rooms = [] #blank canvas - have to add rooms
         self._venue_age_limit = 15
-        self.drinks = []
+        # self.drinks = []
+        self.drinks = {}
 
     def add_room(self,room_to_add):
         self.rooms.append(room_to_add)    
@@ -33,12 +34,12 @@ class Venue:
         guest.decrease_wallet(refund_amount)
         self.add_money_to_till(refund_amount)
 
-    def add_drink(self,drink):
-        self.drinks.append(drink)
+    def add_drink(self,drink,qty):
+        self.drinks[drink] = qty
 
     def sell_drink(self,drink,guest):
-        if drink in self.drinks:
+        if drink in self.drinks and self.drinks[drink] > 0:
             if (guest.age > 18 and drink.abv > 0) or drink.abv == 0: #ignore the law
-                self.drinks.remove(drink)
+                self.drinks[drink] -= 1
                 guest.decrease_wallet(drink.price)
                 self.add_money_to_till(drink.price)

@@ -6,13 +6,14 @@ from src.song import Song
 class TestRoom(unittest.TestCase):
     
     def setUp(self):
-        self.guest1 = Guest("Claire",10.0, 49)
-        self.guest2 = Guest("Mar",50, 30)
-        self.guest3 = Guest("Toby",50, 26)
-        self.guest4 = Guest("Alex",50, 30)
-        self.guest_list = [self.guest1, self.guest2, self.guest3]
         self.song1 = Song("Wichita Lineman", "Glen Campbell", "Country", 1)
         self.song2 = Song("Jolene","Queen Dolly","Country",1)
+        self.song3 = Song("Lose Yourself","Eminem","Rap",1)
+        self.guest1 = Guest("Claire",10.0, 49,self.song1)
+        self.guest2 = Guest("Mar",50, 30,self.song2)
+        self.guest3 = Guest("Toby",50, 26,self.song1)
+        self.guest4 = Guest("Alex",50, 30,self.song1)
+        self.guest_list = [self.guest1, self.guest2, self.guest3]
         self.countryroom = Room(1,[self.guest1],[],"Country")
         self.poproom = Room(1,[self.guest1],[],"Pop")
         self.empty_room = Room(2,[],[],"Rap")
@@ -120,9 +121,23 @@ class TestRoom(unittest.TestCase):
         self.countryroom.add_song_to_room(duet)
         self.countryroom.play_song(duet)
         self.assertEqual(1,len(self.countryroom.songs))
-    # venue has lower age limit
+
     # add drinks class
-    # add alcoholic_drinks & age to guest (dictionary?)
-    # customer can buy a drink?
+    # add alcoholic_drinks & stock_levels
+    # customer can buy a drink? - have made venue.sell_drink
     # young guests can buy non-alcoholic drinks?
-    # separate room for younger guests?
+    # guest has favourite song
+    def test_play_song_favourite(self):
+        # self.countryroom.add_song_to_room(self.song1)
+        self.countryroom.add_song_to_room(self.song2)
+        self.countryroom.add_guest_to_room(self.guest2)
+        result = self.countryroom.play_song(self.song2)
+        self.assertEqual("Woohoo! That's my favourite song!",result)
+
+    def test_play_song_favourite__fail_no_favourite(self):
+        self.countryroom.add_song_to_room(self.song1)
+        self.countryroom.add_song_to_room(self.song2)
+        self.countryroom.add_song_to_room(self.song3)
+        self.countryroom.add_guest_to_room(self.guest2)
+        result = self.countryroom.play_song(self.song3)
+        self.assertEqual(None,result)

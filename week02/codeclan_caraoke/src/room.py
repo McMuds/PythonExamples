@@ -41,3 +41,9 @@ class Room:
     def play_song(self,song):
         if len(self.guests) >= song.singers:
             self.remove_song(song)
+            for guest in self.guests:
+                result = guest.sings_song(song)
+                if result == None:
+                    pass
+                else:
+                    return result
