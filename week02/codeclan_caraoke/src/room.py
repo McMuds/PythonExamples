@@ -5,7 +5,7 @@ class Room:
         self.songs = songs
         self._room_size = 3 #default room size.
         self._room_cost = 15 #default room cost
-        self.room_style = genre
+        self.room_style = genre #multiple rooms of same genre? How big is this place?
 
     def add_guest_to_room(self,new_guest):
         if len(self.guests) < self._room_size and \
