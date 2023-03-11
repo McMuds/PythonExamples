@@ -12,5 +12,5 @@ class Venue:
         self.till += amount
 
     def check_guest_in(self,room,guest):
-        room.add_guest_to_room(guest)
-        self.add_money_to_till(room._room_cost)
+        if room.add_guest_to_room(guest):
+            self.add_money_to_till(room._room_cost)
