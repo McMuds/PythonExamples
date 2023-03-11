@@ -14,7 +14,7 @@ class Room:
             new_guest.decrease_wallet(self._room_cost)
             return True
         return False
-
+    
     def add_song_to_room(self,song):
         if self.room_style == song.genre:
             self.songs.append(song)

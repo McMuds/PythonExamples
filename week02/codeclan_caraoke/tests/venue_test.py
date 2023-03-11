@@ -57,5 +57,13 @@ class TestVenue(unittest.TestCase):
         self.venue1.transfer_guest(self.guest1,self.raproom,self.poproom)
         self.assertEqual(1,len(self.raproom.guests))
         self.assertEqual(0,len(self.poproom.guests))
+        self.assertEqual(50,self.guest1.wallet)
+        self.assertEqual(100,self.venue1.till)
+
+    def test_guest_can_swap_rooms__fail_new_room_busy(self):
+        self.poproom.set_room_size(0)
+        self.venue1.transfer_guest(self.guest2,self.raproom,self.poproom)
+        self.assertEqual(1,len(self.raproom.guests))
+        self.assertEqual(0,len(self.poproom.guests))
         self.assertEqual(100,self.guest2.wallet)
         self.assertEqual(100,self.venue1.till)
