@@ -37,3 +37,9 @@ class TestVenue(unittest.TestCase):
         self.assertEqual(0,len(self.room1.guests))
         self.assertEqual(100,self.venue1.till)
     
+    def test_can_check_guest_in__fail_room_cost(self):
+        self.room1.set_room_cost(100)
+        self.venue1.check_guest_in(self.room1, self.guest1)
+        self.assertEqual(50,self.guest1.wallet)
+        self.assertEqual(0,len(self.room1.guests))
+        self.assertEqual(100,self.venue1.till)
