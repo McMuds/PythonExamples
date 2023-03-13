@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
 }
 header {
-    background:rgb(3,177, 252);
+    background-color:rgb(3,177, 252);
     padding: 4px 16px;
     color: rgb(255,255,255);
 }
@@ -24,7 +24,7 @@ article form div button {
     text-self: right;
 }
 footer {
-    background:rgb(3,177, 252);
+    background-color:rgb(3,177, 252);
     padding: 16px;
     color: rgb(255,255,255);
     text-align: center;
