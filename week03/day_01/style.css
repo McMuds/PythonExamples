@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+}
+header {
+    background:rgb(3,177, 252);
+    padding: 4px 16px;
+    color: rgb(255,255,255);
+}
+header > ul {
+    list-style-type: none;
+}
+header ul a {
+    color: white;
+}
+
+article {
+    padding: 0px 70px;
+}
+
+article form input {
+    width: 100%;
+}
+article form div button {
+    text-self: right;
+}
+footer {
+    background:rgb(3,177, 252);
+    padding: 16px;
+    color: rgb(255,255,255);
+    text-align: center;
+}
