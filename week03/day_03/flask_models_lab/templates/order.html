@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Customer Order</title>
+</head>
+<body>
+     <header id="order-header">
+          <h1>{{ order.customer_name }}'s Order!</h1>
+     </header>
+     <main>
+          <ul>
+               <li>Order Date: {{ order.order_date
+               }}</li>
+               <li>Pizza Name: {{ order.pizza_name
+               }}</li>
+               <li>Quantity: {{ order.quantity
+               }}</li>
+               <li>Size: {{ order.size
+               }}inch</li>
+          </ul>
+     </main>
+     <footer>
+          <a href="http://localhost:4999/orders">back to the order list</a>
+     </footer>
+</body>
+</html>

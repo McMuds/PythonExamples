@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Orders!</title>
+</head>
+<body>
+    <header>
+        <h1>Mario's Pizza Orders</h1>
+
+    </header>
+    <!-- {% set counter = 0 %} -->
+    <main>
+        {% for order in order_list %}
+            {% set url = "http://localhost:4999/orders/" ~ order_list.index(order) %}
+            <section class="single-order">
+                <a href={{url}}>{{order.customer_name}}'s order</a>
+                <p>
+                    <img id=pizzaimage src="{{url_for('static', filename='pizza.png')}}" 
+                    align="middle" height="100" width="100"/>
+                </p>
+            </section>
+        {%endfor%}
+    </main>
+</body>
+</html>
