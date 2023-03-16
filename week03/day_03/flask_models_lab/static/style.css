@@ -1,5 +1,5 @@
 body {
-    background: aliceblue;
+    background-image: linear-gradient(to right, green,green, white, white, red,red);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -41,7 +41,7 @@ main {
     border: solid;
     border-color: darkgrey;
     padding: 10px 50px;
-    border-radius: 3px;
+    border-radius: 10px;
     background: gainsboro;
 }
 
