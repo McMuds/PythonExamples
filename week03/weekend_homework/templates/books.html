@@ -3,12 +3,21 @@
 {% block  content%}  
     <h2>The Book List</h2>
     {% for book in book_list %}
-        <div>
+        <div class="book-card">
             <p>
-                {{ book.title }}: <b>{{ book.author }}</b>
-
+                <b>
+                    {{ book.title }}:  
+                </b>
+            </p>
+            <p>
+                {{ book.author }}
             </p>
             <p>{{ book.genre }}</p>
+
+            <p>
+                <a href="/books/{{book_list.index(book)}}"">Show Book</a>
+            </p>
         </div>
+        <br />
     {% endfor %}
 {% endblock  %}

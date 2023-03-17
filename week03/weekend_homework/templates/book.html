@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block  content%}  
+    <h2>Book Details</h2>
+        <div class="book-card">
+            <p>
+                {{ book.title }}  
+            </p>  
+            <p>
+                <b>{{ book.author }}</b>
+            </p>
+            <p>{{ book.genre }}</p>
+        </div>
+        <!-- <p>This is where the delete button will be</p> -->
+        <!-- <form action="/books/delete/{{index}}" method="post"> -->
+        <div class="delete-book">
+            {% set url_path =  request.path %}
+            <!-- <form action="{{url_path}}/delete" method="post"> -->
+            <form action="{{request.path}}/delete" method="post">
+                <input type="submit" value="Delete This Book" id="delete-book">
+            </form>
+        </div>
+{% endblock  %}
