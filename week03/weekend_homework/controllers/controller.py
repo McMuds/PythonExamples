@@ -15,6 +15,11 @@ def index():
 def book(id):
     return render_template('book.html', title='CodeClan Library', book=book_data[int(id)])
 
+@app.route('/books/<id>', methods=['post'])
+def book_check_in(id):
+    toggle_check_in(book)
+    return render_template('book.html', title='CodeClan Library', book=book_data[int(id)])
+
 @app.route('/books/new') 
 def new_book():
     return render_template('newbook.html', title='CodeClan Library')

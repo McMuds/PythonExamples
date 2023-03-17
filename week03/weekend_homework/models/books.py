@@ -12,3 +12,9 @@ def add_new_book(book):
 
 def delete_book(book):
     book_data.remove(book)
+
+def toggle_check_in(book):
+    if book.checked_in:
+        book.checked_in = False
+    else:
+        book.checked_in = True

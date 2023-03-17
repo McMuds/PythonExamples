@@ -65,6 +65,20 @@ img {
     border-style: solid;
 }
 
+.form-items {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* .delete-book {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    justify-content: center;
+} */
+
 footer {
     background: #a2ad91;
     height: 75px;

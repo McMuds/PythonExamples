@@ -11,13 +11,21 @@
             </p>
             <p>{{ book.genre }}</p>
         </div>
-        <!-- <p>This is where the delete button will be</p> -->
-        <!-- <form action="/books/delete/{{index}}" method="post"> -->
-        <div class="delete-book">
+        <section class="form-items">
+            <form action="{{request.path}}" method="post">
+                <!-- {{ book.checked_in }} -->
+                <label for="checkin">Book is checked in</label>
+                {% if  book.checked_in  %}
+                <input type="checkbox" name="check-in" 
+                    id="checkin" checked onclick="toggle_check_in">    
+                {% else %}
+                <input type="checkbox" name="check-in" 
+                    id="checkin" onclick="toggle_check_in">
+                {% endif %}
+            </form>
             {% set url_path =  request.path %}
-            <!-- <form action="{{url_path}}/delete" method="post"> -->
             <form action="{{request.path}}/delete" method="post">
                 <input type="submit" value="Delete This Book" id="delete-book">
             </form>
-        </div>
+        </section>
 {% endblock  %}
