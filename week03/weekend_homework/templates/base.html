@@ -1,0 +1,26 @@
+<!--base.html -->
+
+<html>
+    <head>
+        <title>{{ title }} - Homepage</title>
+    </head>
+    <body>
+        <h1>CodeClan Library</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/books">Book List</a></li>
+                <li><a href="/books/new">Add a book</a></li>
+            </ul>
+        </nav>
+
+        <hr>
+
+        {% block content %}
+
+        {% endblock %}
+    </body>
+    <footer>
+        <p>CodeClan - copyright 2023</p>
+    </footer>
+</html>
