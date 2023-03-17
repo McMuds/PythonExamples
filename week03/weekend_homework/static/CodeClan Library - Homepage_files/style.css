@@ -2,7 +2,14 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-
+img {
+    height: 400px;
+    width: 500px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 header {
     background:#124e78;
     color: #fff;
@@ -27,42 +34,16 @@ li a {
     color: #fff;
 }
 
-main {
+main{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#main-page-image{
     background: #ffe3dc;
-    display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-img {
-    height: 400px;
-    width: 500px;
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#main-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .book-card {
-    display: flex;
-    width: 150px;
-    flex-direction: column;
-    justify-content: center;
     border-radius: 5px;
-    border-color: #d30c7b;
-    border-style: solid;
 }
 
 footer {
@@ -70,11 +51,9 @@ footer {
     height: 75px;
 }
 
-footer > p {
+footer p {
     color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-end;
-    padding: 25px;
 }
