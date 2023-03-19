@@ -1,26 +1,19 @@
 {% extends 'base.html' %}
 
 {% block  content%}  
-    <p>
-        <h2 class="main-title">The Book List</h2>
-    </p>
-    <br />
-    {% for book in book_list %}
-        <div class="book-card">
-            <p>
-                <b>
-                    {{ book.title }}:  
-                </b>
-            </p>
-            <p>
-                {{ book.author }}
-            </p>
-            <p>{{ book.genre }}</p>
-
-            <p>
-                <a href="/books/{{book_list.index(book)}}"">Show Book</a>
-            </p>
+    <section>
+            <h2 class="section-title">The Book List</h2>
+        <div class="container row">
+            {% for book in book_list %}
+                <div class="book-card">
+                    <p class="title"><b>{{ book.title }}</b></p>
+                    <p class="author">{{ book.author }}</p>
+                    <p class="genre">{{ book.genre }}</p>
+                    <p>
+                        <a href="/books/{{book_list.index(book)}}">Show Book</a>
+                    </p>
+                </div>
+            {% endfor %}
         </div>
-        <br />
-    {% endfor %}
+    </section>
 {% endblock  %}

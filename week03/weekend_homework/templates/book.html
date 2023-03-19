@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block  content%}  
-    <h2>Book Details</h2>
+    <section class="single-book">
+        <h2 class="section-title">Book Details</h2>
         <div class="book-card">
             <p>
                 {{ book.title }}  
@@ -11,21 +12,26 @@
             </p>
             <p>{{ book.genre }}</p>
         </div>
-        <section class="form-items">
+        <div class="form-buttons">
             <form action="{{request.path}}" method="post">
                 <!-- {{ book.checked_in }} -->
-                <label for="checkin">Book is checked in</label>
                 {% if  book.checked_in  %}
-                <input type="checkbox" name="check-in" 
-                    id="checkin" checked onclick="toggle_check_in">    
+                    <label for="checkin">Book is checked in</label>
+                    <input type="checkbox" name="check-in" 
+                        id="checkin" checked onclick="toggle_check_in">    
+                    <input type="submit" value="Check Out" id="check-out-book">
                 {% else %}
-                <input type="checkbox" name="check-in" 
-                    id="checkin" onclick="toggle_check_in">
+                    <label for="checkout">Book is checked out</label>
+                    <input type="checkbox" name="check-out" 
+                        id="checkout" onclick="toggle_check_in">
+                    <input type="submit" value="Check In" id="check-in-book">
                 {% endif %}
             </form>
+            <br />
             {% set url_path =  request.path %}
             <form action="{{request.path}}/delete" method="post">
                 <input type="submit" value="Delete This Book" id="delete-book">
             </form>
-        </section>
+        </div>
+    </section>
 {% endblock  %}
