@@ -1,69 +1,71 @@
-body {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+@media (min-width: 721px) {
 
-header {
+  body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  header {
     background:#124e78;
     color: #fff;
     height: 200px;
-}
+  }
 
-header h1{
+  header h1{
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 40px;
-}
+  }
 
-header nav ul {
+  header nav ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-}
+  }
 
-li a {
+  li a {
     color: #fff;
-}
+  }
 
-article {
+  article {
     display: flex;
     flex-direction: row;
     justify-content: center;
     background: #ffe3dc;
-}
+  }
 
-#main-page-image{
+  #main-page-image{
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
+  }
 
-img {
+  img {
     height: 400px;
     width: 500px;
     margin: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
+  }
 
 
-footer {
+  footer {
     background: #a2ad91;
     height: 75px;
-}
+  }
 
-footer > p {
+  footer > p {
     color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
     padding: 25px;
-}
+  }
 
-.container {
+  .container {
     display: grid;
     justify-content: center;
     margin-left: 10px;
@@ -81,7 +83,7 @@ footer > p {
     justify-content: center;
     align-items: center;
   }
-  
+
   .single-book {
     display: flex;
     justify-content: center;
@@ -94,12 +96,12 @@ footer > p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.add-a-book{
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
+  }
+  .add-a-book{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 
   }
   .book-card {
@@ -119,3 +121,4 @@ footer > p {
   .title{
     color: #d30c7b;
   }
+}
