@@ -13,7 +13,7 @@ def index():
     
 @app.route('/books/<id>')
 def book(id):
-    return render_template('book.html', title='CodeClan Library', book=book_data[int(id)])
+    return render_template('book.html', title='CodeClan Library', book=book_data[int(id)], book_list=book_data)
 
 @app.route('/books/<id>', methods=['post'])
 def book_check_in(id):

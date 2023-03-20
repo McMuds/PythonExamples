@@ -28,8 +28,9 @@
                 {% endif %}
             </form>
             <br />
-            {% set url_path =  request.path %}
-            <form action="{{request.path}}/delete" method="post">
+            <!-- {% set url_path =  request.path %} -->
+            <!-- <form action="{{request.path}}/delete" method="post"> -->
+            <form action="/books/{{book_list.index(book)}}/delete" method="post">
                 <input type="submit" value="Delete This Book" id="delete-book">
             </form>
         </div>
