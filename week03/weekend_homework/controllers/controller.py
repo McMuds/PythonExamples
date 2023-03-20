@@ -1,6 +1,6 @@
 from flask import render_template, redirect, request
 from app import app
-from models.books import book_data, add_new_book, delete_book, toggle_check_in
+from models.books import book_data, add_new_book, delete_book
 from models.book import Book
 
 @app.route('/')
@@ -13,11 +13,14 @@ def index():
     
 @app.route('/books/<id>')
 def book(id):
-    return render_template('book.html', title='CodeClan Library', book=book_data[int(id)], book_list=book_data)
+    return render_template('book.html', title='CodeClan Library', 
+        book=book_data[int(id)], 
+        book_list=book_data, 
+        index=int(id))
 
 @app.route('/books/<id>', methods=['post'])
 def book_check_in(id):
-    toggle_check_in(book_data[int(id)])
+    book_data[int(id)].toggle_check_in()
     return redirect('/books/'+id)
     # return render_template('book.html', title='CodeClan Library', book=book_data[int(id)])
 
@@ -32,7 +35,8 @@ def create_new_book():
     book_genre = request.form['book_genre']
     new_book = Book(book_title, book_author, book_genre)
     add_new_book(new_book)
-    return render_template('newbook.html', title='CodeClan Library')
+    return redirect('/books/new')
+    # return render_template('newbook.html', title='CodeClan Library')
  
 @app.route("/books/<index>/delete", methods=["POST"])
 def books_delete(index):

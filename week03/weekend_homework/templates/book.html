@@ -4,9 +4,9 @@
     <section class="single-book">
         <h2 class="section-title">Book Details</h2>
         <div class="book-card">
-            <p>
+            <h4>
                 {{ book.title }}  
-            </p>  
+            </h4>
             <p>
                 <b>{{ book.author }}</b>
             </p>
@@ -30,7 +30,8 @@
             <br />
             <!-- {% set url_path =  request.path %} -->
             <!-- <form action="{{request.path}}/delete" method="post"> -->
-            <form action="/books/{{book_list.index(book)}}/delete" method="post">
+            <!-- <form action="/books/{{book_list.index(book)}}/delete" method="post"> -->
+            <form action="/books/{{index}}/delete" method="post">
                 <input type="submit" value="Delete This Book" id="delete-book">
             </form>
         </div>
