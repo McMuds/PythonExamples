@@ -1,0 +1,34 @@
+<!--base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"> <!-- NEW -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ title }} - Homepage</title>
+    </head>
+    <body>
+        <header>
+            <h1>CodeClan Library</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/books">Book List</a></li>
+                    <li><a href="/books/new">Add a book</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr />
+        <article>
+            {% block content %}
+            {% endblock %}
+        </article>
+        <hr />
+    </body>
+    <footer>
+        <p>Claire McMurdo - &copy; 2023</p>
+    </footer>
+</html>

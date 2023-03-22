@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block  content%}  
+<section>
+    <h2 class="section-title">Add a book</h2>
+        <form action="/books/new" method="post" class="container-row">
+            <div class="add-a-book">
+                <label for="title">Book Title: </label>
+                <input type="text" name="book_title" id="title" placeholder="Enter the book title"/>
+                <br />
+                <br />
+            </div>    
+            <div class="add-a-book">
+                <label for="author">Author: </label>
+                <select id="author" name="author_id">
+                    {% for author in all_authors %}
+                        <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                    {% endfor %}
+                </select>
+              </div>
+            <div class="add-a-book">    
+                <label for="genre">Genre: </label>
+                <input type="text" name="book_genre" id="genre" placeholder="Enter the genre"/>    
+                <br />
+                <br />
+            </div>
+            <div class="form-buttons">
+                <input type="submit" value="Add book">
+            </div>
+            <br />
+            <br />
+        </form>
+    </section>
+{% endblock  %}

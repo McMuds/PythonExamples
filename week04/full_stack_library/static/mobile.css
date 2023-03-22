@@ -1,0 +1,125 @@
+@media (max-width: 720px) {
+
+    body {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background: #d30c7b;
+    }
+
+    header {
+        background:#124e78;
+        color: #fff;
+        height: 200px;
+    }
+
+    header h1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    li a {
+        color: #fff;
+    }
+
+    article {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background: #ffe3dc;
+    }
+
+    #main-page-image{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 99%;
+        max-height: 99%;
+    }
+
+    img {
+        height: 400px;
+        width: 500px;
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+
+    footer {
+        background: #a2ad91;
+        height: 75px;
+    }
+
+    footer > p {
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 25px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
+
+
+    .section-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .single-book {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .add-a-book{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .book-card {
+        background: #dbb4ad;
+        border: solid;
+        border-color: #d30c7b;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 240px;
+        margin: 4px;
+        padding: 5px;
+    }
+
+    .book-card h4{
+        color: #d30c7b;
+    }
+}

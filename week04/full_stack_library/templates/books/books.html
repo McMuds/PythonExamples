@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block  content%}  
+    <section>
+            <h2 class="section-title">The Book List</h2>
+        <div class="container row">
+            {% for book in book_list %}
+                <div class="book-card">
+                    <h4>{{ book.title }}</h4>
+                    <p class="author">{{ book.author.first_name }} 
+                        {{ book.author.last_name }}
+                    </p>
+                    <p class="genre">{{ book.genre }}</p>
+                    <p>
+                        <a href="/books/{{book.id}}">Show Book</a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock  %}

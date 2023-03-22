@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section>
+    <h2 class="section-title">Edit a book</h2>
+    <form action="/books/{{book.id}}" method="post" class="container-row">
+
+        <div class="add-a-book">
+            <label for="title">Book Title: </label>
+            <input type="text" name="book_title" id="title" value="{{book.title}}"/>
+            <br />
+            <br />
+        </div>    
+        <div class="add-a-book">
+            <label for="author">Author: </label>
+            <select id="author" name="author_id">
+                {% for author in all_authors %}
+                <option value="{{ author.id }}"
+                {% if book.author.id== author.id %} selected="selected"{% endif %}>
+                {{ author.first_name }} {{ author.last_name }}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="add-a-book">    
+            <label for="genre">Genre: </label>
+            <input type="text" name="book_genre" id="genre" value = "{{book.genre}}"/>    
+            <br />
+            <br />
+        </div>
+        <div class="form-buttons">
+            <button type="submit">Update Book</button>  
+        </div>
+        <br />
+        <br />      
+    </form>
+</section>
+
+{% endblock %}

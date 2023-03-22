@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block  content%}  
+    <section class="single-book">
+        <h2 class="section-title">Book Details</h2>
+        <div class="book-card">
+            <h4>
+                {{ book.title }}  
+            </h4>
+            <p>
+                <b>{{ book.author.first_name }} {{ book.author.last_name }}</b>
+            </p>
+            <p>{{ book.genre }}</p>
+        </div>
+        <div class="form-buttons">
+            <form action="/books/{{id}}/check" method="post">
+                <!-- {{ book.checked_in }} -->
+                {% if  book.checked_in  %}
+                    <label for="checkin">Book is checked in</label>
+                    <input type="checkbox" name="check-in" 
+                        id="checkin" checked onclick="toggle_check_in">    
+                    <input type="submit" value="Check Out" id="check-out-book">
+                {% else %}
+                    <label for="checkout">Book is checked out</label>
+                    <input type="checkbox" name="check-out" 
+                        id="checkout" onclick="toggle_check_in">
+                    <input type="submit" value="Check In" id="check-in-book">
+                {% endif %}
+            </form>
+            <form class="delete-form" action="/books/{{book.id}}/delete" method="POST">
+                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+              </form>
+            <br />
+            <form action="/books/{{id}}/edit" method="post">
+                <input type="submit" value="Edit This Book" id="edit-book">
+            </form>
+        </div>
+    </section>
+{% endblock  %}
