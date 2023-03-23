@@ -1,5 +1,4 @@
 from flask import render_template, redirect, request
-# from models.books import book_data, add_new_book, delete_book
 from repositories import book_repository as book_repo
 from repositories import author_repository as author_repo
 from models.book import Book
@@ -23,8 +22,8 @@ def update_book(id):
     author_id = request.form['author_id']
     author = author_repo.select(author_id)
     book_genre = request.form['book_genre']
-    book = book_repo.select(id) #just want to retain the same value here
-    checked_in_value = book.checked_in
+    book = book_repo.select(id)  #in order to keep the checked_in value the same (it's not updatable on this page)
+    checked_in_value = book.checked_in #just want to retain the same value here
     updated_book = Book(book_title, author, book_genre, checked_in_value, id)
     book_repo.update_book(updated_book)
     return redirect('/books/'+id)
