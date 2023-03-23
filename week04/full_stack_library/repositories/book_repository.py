@@ -1,7 +1,5 @@
 from db.run_sql import run_sql
-import pdb
 from models.book import Book
-from models.author import Author
 import repositories.author_repository as author_repo
 
 def select_all():
