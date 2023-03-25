@@ -3,7 +3,13 @@
 {% if lists != None %}
     <ul>
         {% for list in lists %}
+        {% if list.date_shopped == None %}
             <ul>{{ list.id }} created on {{ list.date_created }}</ul>
+        {% else %}
+            <ul>{{ list.id }} created on {{ list.date_created }} was shopped on 
+                {{ list.date_shopped }}
+            </ul>
+        {% endif %}
             <ol>
                 {% for item in list.selection %}
                     <li>
