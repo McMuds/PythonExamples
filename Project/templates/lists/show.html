@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% block  content%}  
+<nav >
+    <ul class="sort-orders">
+        <li><a href="/lists/{{list.id}}/1">category</a></li>
+        <li><a href="/lists/{{list.id}}/2">alphabetical</a></li>
+        <li><a href="/lists/{{list.id}}/3">outstanding</a></li>
+    </ul>
+</nav>
+<ul>
+    {% for sel_item in list.selection %}
+        {% set prev_index = list.selection.index(sel_item) -1 %}
+        {% if (sel_item.item.category.name != list.selection[prev_index].item.category.name ) or prev_index == -1 %}
+            <h4>{{sel_item.item.category.name}}</h4>
+        {% endif %}
+        <li>
+            {{ sel_item.item.name}} 
+            {% if sel_item.selected %}
+                <span>&#9989</span>
+            {% else %}
+                <span>&#10060</span>
+            {% endif %}                
+        </li>                     
+    {% endfor %}
+</ol>            
+
+{% endblock  %}

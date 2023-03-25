@@ -4,20 +4,13 @@
     <ul>
         {% for list in lists %}
         {% if list.date_shopped == None %}
-            <ul>{{ list.id }} created on {{ list.date_created }}</ul>
+            <ul><a href="/lists/{{list.id}}">List {{ list.id }} </a>  created on {{ list.date_created }}</ul>
         {% else %}
-            <ul>{{ list.id }} created on {{ list.date_created }} was shopped on 
+            <ul><a href="/lists/{{list.id}}">List {{ list.id }} </a> created on {{ list.date_created }} was shopped on 
                 {{ list.date_shopped }}
             </ul>
         {% endif %}
-            <ol>
-                {% for item in list.selection %}
-                    <li>
-                        {{ item.item.name}} has been selected: {{ item.selected }}
-                    </li> 
-                
-                {% endfor %}
-            </ol>            
+            
         {% endfor %}
     </ul>
 {% else %}

@@ -1,4 +1,35 @@
-{% extends 'base.html' %}
-{% block  content%}  
-In here is what you want the central part of your splash page 
+{% extends 'base.html' %}{% block  content%}  
+<form action="/items/<item>/add/<list>" method="post" class="container-row">   
+    <div class="add-an-item">
+        <h2>Quick Add an Item!</h2>
+        <label for="item">Item: </label>
+        <select id="item" name="item_id">
+            {% for item in all_items %}
+                <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+      </div>
+    <div class="add-an-item">    
+        <label for="shopping_list">Open Lists: </label>
+        <select name="list_id" id="shopping_list">
+            {% for list in open_lists %}
+            <option value="{{list.id}}">List created on {{ list.date_created }}</option>
+            {% endfor %}
+        </select>
+        <br />
+        <br />
+    </div>
+    <div class="form-buttons">
+        <input type="submit" value="Add item">
+    </div>
+    <br />
+    <br />
+</form>
+<hr />
+<h2>Let's Go Shopping!!!</h2>
+<ul>
+    {% for list in open_lists  %}
+        <li>Shopping List created on <a href="/lists/{{list.id}}/1">{{ list.date_created }}</a></li> --defaults to view by category
+    {% endfor %}
+</ul>
 {% endblock  %}

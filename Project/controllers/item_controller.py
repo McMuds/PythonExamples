@@ -10,3 +10,7 @@ item_blueprint = Blueprint("item",__name__)
 def index():
     items = item_repo.select_all()
     return render_template('/items/index.html', items = items)
+
+@item_blueprint.route("/items/<item>/add/<list>", methods=["post"])
+def add_item(item,list):
+    pass
