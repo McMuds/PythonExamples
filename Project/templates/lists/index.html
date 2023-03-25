@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% block  content%}  
+
+{% if lists != None %}
+    <ul>
+        {% for list in lists %}
+            <ul>{{ list.id }} created on {{ list.date_created }}</ul>
+            <ol>
+                {% for item in list.selection %}
+                    <li>
+                        {{ item.item.name}} has been selected: {{ item.selected }}
+                    </li> 
+                
+                {% endfor %}
+            </ol>            
+        {% endfor %}
+    </ul>
+{% else %}
+    There are no shopping lists. Perhaps you want to create one?
+{% endif %}
+{% endblock  %}

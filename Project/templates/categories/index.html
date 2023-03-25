@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block  content%}  
+In here is what you want the central part of your class home page - ie. show all the books, for example. 
+<ul>
+
+    {% for category in categories %}
+    <ul>{{ category.name }}</ul>
+    
+    {% endfor %}
+</ul>
+{% endblock  %}

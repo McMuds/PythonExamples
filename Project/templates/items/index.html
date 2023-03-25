@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block  content%}  
+<ul>
+
+    {% for item in items %}
+        <ul>{{ item.name }} is in {{ item.category.name }}</ul>
+    {% endfor %}
+</ul>
+{% endblock  %}
