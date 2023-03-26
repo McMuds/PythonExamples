@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% block  content%}  
+<section>
+    <h2 class="section-title">Add a Category</h2>
+        <form class="add-a-new-thing" action="/categories/new" method="post" class="container-row">
+            <div class="add-a-category">
+                <label for="name">New Category Name: </label>
+                <input type="text" name="category_name" id="name" 
+                    placeholder="Enter the category name" autofocus/>
+                <br />
+                <br />
+            </div>    
+          <div class="form-buttons">
+              <input type="submit" value="Add category">
+          </div>
+        </form>
+        <br />
+        <hr />
+            <div class="add-a-new-thing">
+                <h4>Existing Categories</h4>
+                <ul>
+                    {% for category in all_categories %}
+                    <li>
+                        {{ category.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+              </div>
+            <br />
+            <br />
+    </section>
+{% endblock  %}

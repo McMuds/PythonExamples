@@ -9,8 +9,8 @@
 <ul>
     {% for sel_item in list.selection %}
         {% set prev_index = list.selection.index(sel_item) -1 %}
-        {% if (sel_item.item.category.name != list.selection[prev_index].item.category.name ) or prev_index == -1 %}
-            <h4>{{sel_item.item.category.name}}</h4>
+        {% if order == 1 and ((sel_item.item.category.name != list.selection[prev_index].item.category.name ) or prev_index == -1) %}
+            <h4>{{sel_item.item.category.name}}</h4>            
         {% endif %}
         <li>
             {{ sel_item.item.name}} 

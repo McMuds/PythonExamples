@@ -16,8 +16,12 @@ article {
     background: #ffe3dc;
     color: #000;
     height: 60%;
+    padding-left: 10px;
 }
 
+ul {
+    padding-inline-start: 4px;
+}
 
 header h1{
     display: flex;
@@ -74,4 +78,21 @@ footer p{
 
 .sort-orders a{
     color: #124e78;
+}
+
+.add-a-new-thing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.delete-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.delete-item a {
+    padding : 6px 4px 12px;
 }

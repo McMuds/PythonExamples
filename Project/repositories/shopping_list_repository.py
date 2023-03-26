@@ -22,10 +22,10 @@ def get_open_lists():
         list_of_lists.append(shopping_list)
     return list_of_lists
 
-def select(id,order=1): 
+def select(id,order): 
     sql_string = "SELECT * FROM shopping_list WHERE id = %s"
-    values = [id]
+    values = [int(id)]
     result = run_sql(sql_string, values)
-    selection = selection_repo.get_list_selection_ordered(result[0]['id'], order)
+    selection = selection_repo.get_list_selection_ordered(result[0]['id'], int(order))
     shopping_list = Shopping_List(result[0]['date_created'], result[0]['date_shopped'], selection, id)
     return shopping_list

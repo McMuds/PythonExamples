@@ -1,0 +1,33 @@
+{% extends 'base.html' %}{% block  content%}  
+
+<section>
+    <h2 class="section-title">Edit an Item</h2>
+    <form action="/items/{{item.id}}" method="post" class="container-row">
+
+        <div class="add-an-item">
+            <label for="name">Item Name: </label>
+            <input type="text" name="item_name" id="name" value="{{item.name}}"/>
+            <br />
+            <br />
+        </div>    
+        <div class="add-an-item">
+            <label for="category">Category: </label>
+            <select id="category" name="category_id">
+                {% for category in all_categories %}
+                    <option value="{{ category.id }}"
+                    {% if item.category.id== category.id %} selected="selected"{% endif %}>
+                    {{ category.name }}
+                {% endfor %}
+            </select>
+        </div>
+        <br/>
+        <br/>
+        <div class="form-buttons">
+            <button type="submit">Update Item</button>  
+        </div>
+        <br />
+        <br />      
+    </form>
+</section>
+
+{% endblock  %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}{% block  content%}  
-<form action="/items/<item>/add/<list>" method="post" class="container-row">   
+<form action="/shopping_lists/add" method="post" class="container-row">   
     <div class="add-an-item">
         <h2>Quick Add an Item!</h2>
         <label for="item">Item: </label>
@@ -29,7 +29,7 @@
 <h2>Let's Go Shopping!!!</h2>
 <ul>
     {% for list in open_lists  %}
-        <li>Shopping List created on <a href="/lists/{{list.id}}/1">{{ list.date_created }}</a></li> --defaults to view by category
+        <li>Shopping List created on <a href="/lists/{{list.id}}/1">{{ list.date_created }}</a></li>
     {% endfor %}
 </ul>
 {% endblock  %}

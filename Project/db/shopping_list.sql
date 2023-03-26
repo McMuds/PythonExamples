@@ -18,13 +18,13 @@ CREATE TABLE shopping_list (
 CREATE TABLE items (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    cat_id int REFERENCES categories(id)
+    cat_id int REFERENCES categories(id) ON DELETE CASCADE
 );
  
 CREATE TABLE  list_items(
     id SERIAL PRIMARY KEY,
-    list_id int REFERENCES shopping_list(id),
-    item_id int REFERENCES items(id),
+    list_id int REFERENCES shopping_list(id) ON DELETE CASCADE,
+    item_id int REFERENCES items(id) ON DELETE CASCADE,
     selected boolean
 );
  

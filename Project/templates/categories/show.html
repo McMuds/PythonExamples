@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% block  content%}  
+
+<section>
+    <h2 class="section-title">Edit a Category</h2>
+    <form action="/categories/{{category.id}}" method="post" class="container-row">
+
+        <div class="add-a-category">
+            <label for="name">category Name: </label>
+            <input type="text" name="category_name" id="name" value="{{category.name}}"/>
+            <br />
+            <br />
+        </div>    
+        <br/>
+        <br/>
+        <div class="form-buttons">
+            <button type="submit">Update Category</button>  
+        </div>
+        <br />
+        <br />      
+    </form>
+</section>
+
+{% endblock  %}

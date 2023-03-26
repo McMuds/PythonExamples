@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
-{% block  content%}  
-In here is what you want the central part of your class home page - ie. show all the books, for example. 
-<ul>
+{% extends 'base.html' %}{% block  content%}  
 
+<a href="/categories/new">Add a new Category</a>
+
+<ul>
     {% for category in categories %}
-    <ul>{{ category.name }}</ul>
-    
+        <form action="/categories/{{category.id}}/delete" method="POST">
+        <ul class="delete-item"><a href="/categories/{{category.id}}">{{ category.name }}</a>
+                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+            </ul>
+        </form>
     {% endfor %}
 </ul>
 {% endblock  %}
