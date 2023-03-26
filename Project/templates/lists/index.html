@@ -8,18 +8,20 @@
 {% if lists != None %}
     <ul>
         {% for list in lists %}
-        {% if list.date_shopped == None %}
-            <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }} items, created on {{ list.date_created }}</ul>
-        {% else %}
-            <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }} items, created on {{ list.date_created }} was shopped on 
-                {{ list.date_shopped }}
-            </ul>
-        {% endif %}
-            
+        <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }}
+            {% if list.selection|length == 1 %}
+                item, 
+            {% else %}
+                items,
+            {% endif %}
+            created on {{ list.date_created }}
+            {% if list.date_shopped != None %}
+                and was shopped on {{ list.date_shopped }}
+            {% endif %}
+        </ul>
         {% endfor %}
     </ul>
 {% else %}
     There are no shopping lists. Perhaps you want to <a href="/shopping_lists/new" method="post">create one</a>?
-
 {% endif %}
 {% endblock  %}

@@ -36,3 +36,8 @@ def insert_item(list, item):
                 VALUES (%s, %s, False)"
     values = [list.id, item.id]
     run_sql(sql_string,values)
+
+def remove_item(list_id, item_id):
+    sql_string = "DELETE FROM list_items WHERE list_id = %s AND item_id = %s"
+    values = [list_id, item_id]
+    run_sql(sql_string, values)

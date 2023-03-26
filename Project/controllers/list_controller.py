@@ -37,3 +37,8 @@ def new_list():
     # pdb.set_trace()
     list_repo.create_new_list()
     return redirect('/lists')
+
+@shopping_list_blueprint.route('/lists/<list_id>/delete/<item_id>', methods=['post'])
+def delete_item_from_list(list_id, item_id):
+    selection_repo.remove_item(int(list_id),int(item_id))
+    return redirect('/lists/'+list_id)

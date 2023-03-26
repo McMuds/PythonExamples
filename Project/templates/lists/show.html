@@ -6,7 +6,7 @@
         <li><a href="/lists/{{list.id}}/3">outstanding</a></li>
     </ul>
 </nav>
-<ul>
+<ul class="thing-listing">
     {% for sel_item in list.selection %}
         {% set prev_index = list.selection.index(sel_item) -1 %}
         {% if order == 1 and ((sel_item.item.category.name != list.selection[prev_index].item.category.name ) or prev_index == -1) %}
@@ -18,7 +18,10 @@
                 <span>&#9989</span>
             {% else %}
                 <span>&#10060</span>
-            {% endif %}                
+            {% endif %} 
+            <form action="/lists/{{list.id}}/delete/{{sel_item.item.id}}" method="post">
+                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>               
+            </form>
         </li>                     
     {% endfor %}
 </ol>            
