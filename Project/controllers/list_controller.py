@@ -13,14 +13,22 @@ def index():
     lists = list_repo.select_all()
     return render_template('/lists/index.html', lists=lists)
 
-@shopping_list_blueprint.route('/lists/<id>')
-def show_list(id):
+@shopping_list_blueprint.route('/lists/shop/<id>/<order>')
+def shop_list(id,order):
+    # pdb.set_trace()
     list = list_repo.select(id,1)
-    return render_template('/lists/show.html', list=list, order = 1)
+    return render_template('/lists/show.html', list=list, order=int(order), active=True)
+
+# @shopping_list_blueprint.route('/lists/<id>')
+# def show_list(id):
+#     pdb.set_trace()
+#     list = list_repo.select(id,1)
+#     return render_template('/lists/show.html', list=list, order=1, active=False)
 
 @shopping_list_blueprint.route('/lists/<id>/<display_order>')
 def show_list_ordered(id,display_order):
-    list = list_repo.select(id,int(display_order))
+    # pdb.set_trace()
+    list = list_repo.select(int(id), int(display_order))
     return render_template('/lists/show.html', list=list, order=int(display_order))
 
 @shopping_list_blueprint.route('/shopping_lists/add', methods=['post'])

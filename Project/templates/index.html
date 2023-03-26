@@ -37,7 +37,7 @@
 <h2>Let's Go Shopping!!!</h2>
 <ul>
     {% for list in open_lists  %}
-        <li>Shopping List created on <a href="/lists/{{list.id}}/1">{{ list.date_created }}</a></li>
+        <li>Shopping List created on <a href="/lists/shop/{{list.id}}/1">{{ list.date_created }}</a></li>
     {% endfor %}
 </ul>
 {% endblock  %}

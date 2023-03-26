@@ -8,7 +8,7 @@
 {% if lists != None %}
     <ul>
         {% for list in lists %}
-        <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }}
+        <ul><a href="/lists/{{list.id}}/1">List {{ list.id }}</a> has {{ list.selection|length }}
             {% if list.selection|length == 1 %}
                 item, 
             {% else %}

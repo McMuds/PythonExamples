@@ -24,9 +24,9 @@ def get_open_lists():
 
 def select(id,order): 
     sql_string = "SELECT * FROM shopping_list WHERE id = %s"
-    values = [int(id)]
+    values = [id]
     result = run_sql(sql_string, values)
-    selection = selection_repo.get_list_selection_ordered(result[0]['id'], int(order))
+    selection = selection_repo.get_list_selection_ordered(result[0]['id'], order)
     shopping_list = Shopping_List(result[0]['date_created'], result[0]['date_shopped'], selection, id)
     return shopping_list
 
