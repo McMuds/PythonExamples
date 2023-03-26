@@ -1,4 +1,61 @@
 {% extends 'base.html' %}
 {% block  content%}  
-ABOUT
+<h2>About</h2>
+What can I say? Python, HTML, Flask, Jinja and PostgreSQL are a marriage made in heaven. Where's the CSS, you say? Yeah - there's
+a reason I didn't include it.
+This is a shopping list mobile-first application that takes the full list of items that you've ever put on your list, and helps you
+create meaningful, manageable shopping lists.
+
+<h3>MVP</h3>
+<ul>
+
+    <li>
+        Be able to add items I need to buy
+    </li>
+    <li>
+        Be able to add categories for items
+    </li>
+    <li>
+        Be able to show all items on the list in a particular category
+    </li>
+    <li>
+        Be able to look through previously bought items and mark that I need them
+    </li>
+    <li>
+        Be able to look through previously added items by category
+    </li>
+    <li>
+        Be able to create a shopping list and check things off as they’re bought
+    </li>
+    <li>
+        Be able to sort the shopping list in various ways: category, alphabetical, ticked/not
+    </li>
+</ul>
+
+<h3>Possible Extensions</h3>
+<li>
+    Add a layout to the shop so that the shopping list is presented in the order you’d see it in the store
+</li>
+<li>
+    Be able to change that layout if the shop is rejigged
+</li>
+<li>
+    Add different shops and be able to add layouts to each shop, so you can see where things are based on that shop, and therefore a Tesco list would be different from an Asda list
+</li>
+<li>
+    Be able to suggest common items based on previous shopping lists 
+        <dd>
+            - frequency of appearance on a list 
+        </dd>
+        <dd>
+            - consistency - you've bought once every 4 weeks, and it's been a while since you last bought it. (yeah - this is stupidly hard)
+        </dd>
+    </dl>
+</li>
+<li>
+    Be able to have shop specific goods (ie you like a brand of yoghurt that you can only get in Tesco. If you’re going to Tesco, prompt it as a suggestion)
+</li>
+<li>
+    Be able to add a quantity to items - I need 600ml of cream because I’m making Keith, Mar and Sky a bribe cake
+</li>
 {% endblock  %}
