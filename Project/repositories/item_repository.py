@@ -37,3 +37,14 @@ def delete_item(id):
     sql_string = "DELETE FROM items WHERE id = %s"
     values = [int(id)]
     run_sql(sql_string,values)
+
+def select_cat_items(cat_id):
+    sql_string = "SELECT * FROM items WHERE cat_id = %s"
+    values = [cat_id]
+    result = run_sql(sql_string,values)
+    items = []
+    for row in result:
+        category = cat_repo.select(row['cat_id'])
+        item = Item(row['name'], category, row['id'])
+        items.append(item)
+    return items

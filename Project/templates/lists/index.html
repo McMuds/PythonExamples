@@ -1,12 +1,17 @@
 {% extends 'base.html' %}{% block  content%}  
+<form action="/shopping_lists/new" method="post">
+    <div>
+       <input type="submit" value="new list">
+    </div>
+</form>
 
 {% if lists != None %}
     <ul>
         {% for list in lists %}
         {% if list.date_shopped == None %}
-            <ul><a href="/lists/{{list.id}}">List {{ list.id }} </a>  created on {{ list.date_created }}</ul>
+            <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }} items, created on {{ list.date_created }}</ul>
         {% else %}
-            <ul><a href="/lists/{{list.id}}">List {{ list.id }} </a> created on {{ list.date_created }} was shopped on 
+            <ul><a href="/lists/{{list.id}}">List {{ list.id }}</a> has {{ list.selection|length }} items, created on {{ list.date_created }} was shopped on 
                 {{ list.date_shopped }}
             </ul>
         {% endif %}
@@ -14,7 +19,7 @@
         {% endfor %}
     </ul>
 {% else %}
-    There are no shopping lists. Perhaps you want to <a href="/lists/new">create one</a>?
+    There are no shopping lists. Perhaps you want to <a href="/shopping_lists/new" method="post">create one</a>?
 
 {% endif %}
 {% endblock  %}

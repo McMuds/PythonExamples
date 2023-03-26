@@ -1,5 +1,7 @@
 {% extends 'base.html' %}{% block  content%}  
-
+<nav>
+    <a href="/items">back</a>
+</nav>
 <section>
     <h2 class="section-title">Edit an Item</h2>
     <form action="/items/{{item.id}}" method="post" class="container-row">

@@ -3,6 +3,7 @@ from repositories import shopping_list_repository as list_repo
 from repositories import selection_repository as selection_repo
 from repositories import item_repository as item_repo
 # from models.shopping_list import Shopping_List
+import pdb
  
 from flask import Blueprint
 shopping_list_blueprint = Blueprint("shopping_list",__name__)
@@ -22,7 +23,7 @@ def show_list_ordered(id,display_order):
     list = list_repo.select(id,int(display_order))
     return render_template('/lists/show.html', list=list, order=int(display_order))
 
-@shopping_list_blueprint.route("/shopping_lists/add", methods=["post"])
+@shopping_list_blueprint.route('/shopping_lists/add', methods=['post'])
 def add_item_to_list():
     list_id = request.form['list_id']
     item_id = request.form['item_id']
@@ -30,3 +31,9 @@ def add_item_to_list():
     item = item_repo.select(item_id)
     selection_repo.insert_item(list, item)
     return redirect('/')
+
+@shopping_list_blueprint.route('/shopping_lists/new', methods=['post'])
+def new_list():
+    # pdb.set_trace()
+    list_repo.create_new_list()
+    return redirect('/lists')

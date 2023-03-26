@@ -29,3 +29,7 @@ def select(id,order):
     selection = selection_repo.get_list_selection_ordered(result[0]['id'], int(order))
     shopping_list = Shopping_List(result[0]['date_created'], result[0]['date_shopped'], selection, id)
     return shopping_list
+
+def create_new_list():
+    sql_string = "INSERT INTO shopping_list (date_created) VALUES (now())"
+    run_sql(sql_string)

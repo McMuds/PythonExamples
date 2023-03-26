@@ -1,4 +1,11 @@
 {% extends 'base.html' %}{% block  content%}  
+{% if open_lists|length == 0 %}
+<form action="/shopping_lists/new" method="post">
+    <div>
+        No open lists. Perhaps you should <input type="submit" value="create one">?
+    </div>
+</form>
+{% else %}
 <form action="/shopping_lists/add" method="post" class="container-row">   
     <div class="add-an-item">
         <h2>Quick Add an Item!</h2>
@@ -9,21 +16,22 @@
             {% endfor %}
         </select>
       </div>
-    <div class="add-an-item">    
-        <label for="shopping_list">Open Lists: </label>
-        <select name="list_id" id="shopping_list">
-            {% for list in open_lists %}
-            <option value="{{list.id}}">List created on {{ list.date_created }}</option>
-            {% endfor %}
-        </select>
+    <div class="add-an-item"> 
+            <label for="shopping_list">Open Lists: </label>
+            <select name="list_id" id="shopping_list">
+                {% for list in open_lists %}
+                <option value="{{list.id}}">List created on {{ list.date_created }}</option>
+                {% endfor %}
+            </select>
+            <br />
+            <br />
+        </div>
+        <div class="form-buttons">
+            <input type="submit" value="Add item">
+        </div>
         <br />
         <br />
-    </div>
-    <div class="form-buttons">
-        <input type="submit" value="Add item">
-    </div>
-    <br />
-    <br />
+        {% endif %}   
 </form>
 <hr />
 <h2>Let's Go Shopping!!!</h2>

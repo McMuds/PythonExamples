@@ -41,6 +41,11 @@ def show_item(id):
     categories = category_repo.select_all()
     return render_template('/items/show.html', item=item, all_categories=categories)
 
+@item_blueprint.route('/items/<cat_id>/cat')
+def show_category_items(cat_id):
+    item_list = item_repo.select_cat_items(int(cat_id))
+    return render_template('/items/index.html', items = item_list)
+
 @item_blueprint.route('/items/<id>', methods=['post'])
 def save_item(id):
     item_name = request.form['item_name']
