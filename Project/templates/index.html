@@ -1,12 +1,13 @@
 {% extends 'base.html' %}{% block  content%}  
 {% if open_lists|length == 0 %}
-<form action="/shopping_lists/new" method="post">
+<!-- <form action="/shopping_lists/new" method="post"> -->
     <div>
-        No open lists. Perhaps you should <input type="submit" value="create one">?
+        No open lists. Perhaps you should <a href="/lists/new">create one</a>?
+        <!-- No open lists. Perhaps you should <input type="submit" value="create one">? -->
     </div>
-</form>
+<!-- </form> -->
 {% else %}
-<form action="/shopping_lists/add" method="post" class="container-row">   
+<form action="/lists/add" method="post" class="container-row">   
     <div class="add-an-item">
         <h2>Quick Add an Item!</h2>
         <label for="item">Item: </label>
@@ -15,7 +16,7 @@
                 <option value="{{ item.id }}">{{ item.name }}</option>
             {% endfor %}
         </select>
-      </div>
+    </div>
     <div class="add-an-item"> 
             <label for="shopping_list">Open Lists: </label>
             <select name="list_id" id="shopping_list">
@@ -37,7 +38,17 @@
 <h2>Let's Go Shopping!!!</h2>
 <ul>
     {% for list in open_lists  %}
-        <li>Shopping List created on <a href="/lists/shop/{{list.id}}/1">{{ list.date_created }}</a></li>
+        <li><a href="/lists/shop/{{list.id}}/1">Shopping List</a> with {{ list.selection|length }}
+            {% if list.selection|length == 1 %}
+                item,
+            {% else %}
+                items,
+            {% endif %}
+             created on {{ list.date_created }}
+            {% if list.date_shopped != None %}
+                and was shopped on {{ list.date_shopped }}
+            {% endif %}
+        </li>
     {% endfor %}
 </ul>
 {% endblock  %}

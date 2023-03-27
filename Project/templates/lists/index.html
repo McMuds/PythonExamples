@@ -1,10 +1,8 @@
 {% extends 'base.html' %}{% block  content%}  
-<form action="/shopping_lists/new" method="post">
-    <div>
-       <input type="submit" value="new list">
-    </div>
-</form>
-
+<nav>
+    <a href="/lists/new">Create a new list</a>
+    <a href="/lists">back</a>
+</nav>
 {% if lists != None %}
     <ul>
         {% for list in lists %}
@@ -22,6 +20,6 @@
         {% endfor %}
     </ul>
 {% else %}
-    There are no shopping lists. Perhaps you want to <a href="/shopping_lists/new" method="post">create one</a>?
+    There are no shopping lists. Perhaps you want to <a href="/lists/new" method="post">create one</a>?
 {% endif %}
 {% endblock  %}

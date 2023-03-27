@@ -1,24 +1,37 @@
 {% extends 'base.html' %}{% block  content%}  
-<nav >
+<nav>
+    <ul class="nav-list">
+        <li><a href="/lists/{{list.id|int - 1}}/1">prev list</a></li>
+        <li><a href="/lists">back</a></li>
+        <li><a href="/lists/{{list.id|int + 1}}/1">next list</a></li>
+    </ul>
+</nav>
+<div>
     <ul class="sort-orders">
         <li><a href="/lists/{{list.id}}/1">category</a></li>
         <li><a href="/lists/{{list.id}}/2">alphabetical</a></li>
         <li><a href="/lists/{{list.id}}/3">outstanding</a></li>
     </ul>
-</nav>
+</div>
 <ul class="thing-listing">
-    {% for sel_item in list.selection %}
+    {% for sel_item in list.selection|sort(attribute='id') %}
         {% set prev_index = list.selection.index(sel_item) -1 %}
         {% if order == 1 and ((sel_item.item.category.name != list.selection[prev_index].item.category.name ) or prev_index == -1) %}
             <h4>{{sel_item.item.category.name}}</h4>            
         {% endif %}
         <li>
             {{ sel_item.item.name}} 
-            {% if sel_item.selected %}
-                <span>&#9989</span>
-            {% else %}
-                <span>&#10060</span>
-            {% endif %} 
+            <form action="/lists/{{list.id}}/update/{{sel_item.item.id}}">
+                {% if sel_item.selected %}
+                    <button>
+                        <span>&#9989</span>
+                    </button>
+                {% else %}
+                    <button>
+                        <span>&#10060</span>
+                    </button>
+                {% endif %} 
+            </form>
             <form action="/lists/{{list.id}}/delete/{{sel_item.item.id}}" method="post">
                 <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>               
             </form>

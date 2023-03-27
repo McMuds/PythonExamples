@@ -8,7 +8,7 @@
     </ul>
 </nav>
 <ul>
-    {% for item in items %}
+    {% for item in items|sort(attribute='id') %}
         {% set prev_index = items.index(item) -1 %}
         {% if (item.category.name != items[prev_index].category.name ) 
                 or prev_index == -1 %}

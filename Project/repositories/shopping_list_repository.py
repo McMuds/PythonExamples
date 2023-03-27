@@ -31,5 +31,7 @@ def select(id,order):
     return shopping_list
 
 def create_new_list():
-    sql_string = "INSERT INTO shopping_list (date_created) VALUES (now())"
-    run_sql(sql_string)
+    sql_string = "INSERT INTO shopping_list (date_created) VALUES (now()) returning *"
+    results = run_sql(sql_string)
+    list_id = results[0]['id']
+    return list_id

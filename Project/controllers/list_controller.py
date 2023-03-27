@@ -8,6 +8,11 @@ import pdb
 from flask import Blueprint
 shopping_list_blueprint = Blueprint("shopping_list",__name__)
  
+def insert_item_to_list(list_id, item_id):
+    list = list_repo.select(list_id,1)
+    item = item_repo.select(item_id)
+    selection_repo.insert_item(list, item)
+
 @shopping_list_blueprint.route('/lists')
 def index():
     lists = list_repo.select_all()
@@ -31,22 +36,36 @@ def show_list_ordered(id,display_order):
     list = list_repo.select(int(id), int(display_order))
     return render_template('/lists/show.html', list=list, order=int(display_order))
 
-@shopping_list_blueprint.route('/shopping_lists/add', methods=['post'])
+@shopping_list_blueprint.route('/lists/add', methods=['post'])
 def add_item_to_list():
     list_id = request.form['list_id']
     item_id = request.form['item_id']
-    list = list_repo.select(list_id,1)
-    item = item_repo.select(item_id)
-    selection_repo.insert_item(list, item)
+    # list = list_repo.select(list_id,1)
+    # item = item_repo.select(item_id)
+    # selection_repo.insert_item(list, item)
+    insert_item_to_list(int(list_id), int(item_id))
     return redirect('/')
 
-@shopping_list_blueprint.route('/shopping_lists/new', methods=['post'])
+@shopping_list_blueprint.route('/lists/new')
 def new_list():
+    list_of_items = item_repo.select_all()
+    return render_template('/lists/new.html', all_items=list_of_items)
+
+@shopping_list_blueprint.route('/lists/new', methods=['post'])
+def create_new_list():
     # pdb.set_trace()
-    list_repo.create_new_list()
+    list_id = list_repo.create_new_list()
+    item_id = request.form['item_id']
+    insert_item_to_list(int(list_id), int(item_id))
+    # list_of_items = item_repo.select_all()
     return redirect('/lists')
 
 @shopping_list_blueprint.route('/lists/<list_id>/delete/<item_id>', methods=['post'])
 def delete_item_from_list(list_id, item_id):
     selection_repo.remove_item(int(list_id),int(item_id))
     return redirect('/lists/'+list_id)
+
+@shopping_list_blueprint.route('/lists/<list_id>/update/<item_id>')
+def toggle_selected(list_id,item_id):
+    selection_repo.toggle_item_selected(int(list_id), int(item_id))
+    return redirect('/lists/shop/'+list_id+'/1')

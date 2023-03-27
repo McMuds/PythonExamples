@@ -1,0 +1,24 @@
+{% extends 'base.html' %}{% block  content%}  
+<nav>
+    <a href="/lists">back</a>
+</nav>
+<section>
+    <h2 class="section-title">Create a new shopping list</h2>
+    <form action="/lists/new" method="post" class="container-row">   
+        <div class="add-an-item">
+            <h2>Add an Item!</h2>
+            <label for="item">Item: </label>
+            <select id="item" name="item_id">
+                {% for item in all_items %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" value="Create List!">
+        </div>
+        <br />
+        <br />
+    </form>
+</section>
+{% endblock  %}

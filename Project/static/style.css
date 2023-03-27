@@ -80,6 +80,20 @@ footer p{
     color: #124e78;
 }
 
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: flex-start;
+    font-size: smaller;
+    color: #124e78;
+}
+
+.nav-list a{
+    color: #124e78;
+    margin-right: 1rem;
+}
+
 .add-a-new-thing {
     display: flex;
     flex-direction: column;
