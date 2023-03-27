@@ -34,7 +34,9 @@ def shop_list(id,order):
 def show_list_ordered(id,display_order):
     # pdb.set_trace()
     list = list_repo.select(int(id), int(display_order))
-    return render_template('/lists/show.html', list=list, order=int(display_order))
+    prev_id = list_repo.get_prev_list(int(id))
+    next_id = list_repo.get_next_list(int(id))
+    return render_template('/lists/show.html', list=list, order=int(display_order), prev_id=prev_id, next_id=next_id)
 
 @shopping_list_blueprint.route('/lists/add', methods=['post'])
 def add_item_to_list():

@@ -1,7 +1,8 @@
 from db.run_sql import run_sql
 from models.shopping_list import Shopping_List
 from repositories import selection_repository as selection_repo
- 
+import pdb
+
 def select_all(): 
     list_of_lists = []
     sql_string = "SELECT * FROM shopping_list ORDER BY id DESC"
@@ -35,3 +36,25 @@ def create_new_list():
     results = run_sql(sql_string)
     list_id = results[0]['id']
     return list_id
+
+def get_prev_list(id):
+    sql_string = "SELECT id FROM shopping_list WHERE id < %s ORDER BY id DESC"
+    values = [id]
+    result=[]
+    result = run_sql(sql_string, values)
+    # pdb.set_trace()
+    if result == None or len(result) == 0:
+        return 0
+    else:
+        return result[0]['id']
+
+def get_next_list(id):
+    sql_string = "SELECT id FROM shopping_list WHERE id > %s ORDER BY id"
+    values = [id]
+    result=[]
+    result = run_sql(sql_string, values)
+    # pdb.set_trace() #this caused all sorts of issues
+    if result == None or len(result) == 0:
+        return 0
+    else:
+        return result[0]['id']

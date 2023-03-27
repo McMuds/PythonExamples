@@ -12,6 +12,8 @@
         <h2>Quick Add an Item!</h2>
         <label for="item">Item: </label>
         <select id="item" name="item_id">
+            <option disabled="disabled" selected="selected" class="grey-text"
+                value=" ">Pick an item to add!</option>
             {% for item in all_items %}
                 <option value="{{ item.id }}">{{ item.name }}</option>
             {% endfor %}

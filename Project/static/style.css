@@ -124,3 +124,7 @@ footer p{
 .thing-listing li{
     margin-left: 15px;
 }
+
+.grey-text {
+    background-color: gray
+}

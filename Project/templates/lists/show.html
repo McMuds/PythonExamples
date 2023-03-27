@@ -1,9 +1,13 @@
 {% extends 'base.html' %}{% block  content%}  
 <nav>
     <ul class="nav-list">
-        <li><a href="/lists/{{list.id|int - 1}}/1">prev list</a></li>
+        {% if prev_id!= 0 %}
+            <li><a href="/lists/{{prev_id}}/{{order}}">prev list</a></li>
+        {% endif %}
         <li><a href="/lists">back</a></li>
-        <li><a href="/lists/{{list.id|int + 1}}/1">next list</a></li>
+        {% if next_id != 0 %}
+            <li><a href="/lists/{{next_id}}/{{order}}">next list</a></li>
+        {% endif %}
     </ul>
 </nav>
 <div>
