@@ -9,6 +9,7 @@
             <h2>Add an Item!</h2>
             <label for="item">Item: </label>
             <select id="item" name="item_id">
+                <option value=" ">Add an item to the list</option>
                 {% for item in all_items %}
                     <option value="{{ item.id }}">{{ item.name }}</option>
                 {% endfor %}

@@ -9,20 +9,23 @@ from flask import Blueprint
 shopping_list_blueprint = Blueprint("shopping_list",__name__)
  
 def insert_item_to_list(list_id, item_id):
-    list = list_repo.select(list_id,1)
+    # pdb.set_trace()
+    s_list = list_repo.select(list_id,1)
     item = item_repo.select(item_id)
-    selection_repo.insert_item(list, item)
+    selection_repo.insert_item(s_list, item)
 
 @shopping_list_blueprint.route('/lists')
 def index():
     lists = list_repo.select_all()
-    return render_template('/lists/index.html', lists=lists)
+    return render_template('/lists/index.html', all_lists=lists)
 
 @shopping_list_blueprint.route('/lists/shop/<id>/<order>')
 def shop_list(id,order):
     # pdb.set_trace()
     list = list_repo.select(id,1)
-    return render_template('/lists/show.html', list=list, order=int(order), active=True)
+    prev_id = list_repo.get_prev_list(int(id))
+    next_id = list_repo.get_next_list(int(id))
+    return render_template('/lists/show.html', list=list, order=int(order), prev_id=prev_id, next_id=next_id, active=True)
 
 # @shopping_list_blueprint.route('/lists/<id>')
 # def show_list(id):
@@ -36,15 +39,13 @@ def show_list_ordered(id,display_order):
     list = list_repo.select(int(id), int(display_order))
     prev_id = list_repo.get_prev_list(int(id))
     next_id = list_repo.get_next_list(int(id))
-    return render_template('/lists/show.html', list=list, order=int(display_order), prev_id=prev_id, next_id=next_id)
+    return render_template('/lists/show.html', list=list, order=int(display_order), prev_id=prev_id, next_id=next_id, active = False)
 
 @shopping_list_blueprint.route('/lists/add', methods=['post'])
 def add_item_to_list():
+    # pdb.set_trace()
     list_id = request.form['list_id']
     item_id = request.form['item_id']
-    # list = list_repo.select(list_id,1)
-    # item = item_repo.select(item_id)
-    # selection_repo.insert_item(list, item)
     insert_item_to_list(int(list_id), int(item_id))
     return redirect('/')
 
@@ -71,3 +72,9 @@ def delete_item_from_list(list_id, item_id):
 def toggle_selected(list_id,item_id):
     selection_repo.toggle_item_selected(int(list_id), int(item_id))
     return redirect('/lists/shop/'+list_id+'/1')
+
+@shopping_list_blueprint.route('/lists/delete', methods=['post'])
+def delete():
+    list_id = request.form['list_id']
+    list_repo.delete(int(list_id))
+    return redirect('/lists')

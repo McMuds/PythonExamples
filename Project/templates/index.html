@@ -9,18 +9,19 @@
 {% else %}
 <form action="/lists/add" method="post" class="container-row">   
     <div class="add-an-item">
-        <h2>Quick Add an Item!</h2>
-        <label for="item">Item: </label>
+        <h2>Quick Add</h2>
+        Add an item to any open list <br /><br />
+        <label for="item">Item to be added: </label>
         <select id="item" name="item_id">
             <option disabled="disabled" selected="selected" class="grey-text"
-                value=" ">Pick an item to add!</option>
+                value=" ">Pick an item to add</option>
             {% for item in all_items %}
                 <option value="{{ item.id }}">{{ item.name }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="add-an-item"> 
-            <label for="shopping_list">Open Lists: </label>
+            <label for="shopping_list">Available shopping lists: </label>
             <select name="list_id" id="shopping_list">
                 {% for list in open_lists %}
                 <option value="{{list.id}}">List created on {{ list.date_created }}</option>
@@ -37,7 +38,8 @@
         {% endif %}   
 </form>
 <hr />
-<h2>Let's Go Shopping!!!</h2>
+<h2>Let's Go Shopping</h2>
+select one of the lists below when you're ready to go shopping
 <ul>
     {% for list in open_lists  %}
         <li><a href="/lists/shop/{{list.id}}/1">Shopping List</a> with {{ list.selection|length }}

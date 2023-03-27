@@ -58,3 +58,8 @@ def get_next_list(id):
         return 0
     else:
         return result[0]['id']
+    
+def delete(id):
+    sql_string = "DELETE FROM shopping_list where id = %s"
+    values = [id]
+    run_sql(sql_string, values)

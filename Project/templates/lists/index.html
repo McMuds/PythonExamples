@@ -1,11 +1,13 @@
 {% extends 'base.html' %}{% block  content%}  
 <nav>
-    <a href="/lists/new">Create a new list</a>
-    <a href="/lists">back</a>
+    <a class="nav-list" href="/lists">back</a>
 </nav>
+<p>
+    <a href="/lists/new">Create a new list</a>
+</p>
 {% if lists != None %}
     <ul>
-        {% for list in lists %}
+        {% for list in all_lists %}
         <ul><a href="/lists/{{list.id}}/1">List {{ list.id }}</a> has {{ list.selection|length }}
             {% if list.selection|length == 1 %}
                 item, 
@@ -22,4 +24,24 @@
 {% else %}
     There are no shopping lists. Perhaps you want to <a href="/lists/new" method="post">create one</a>?
 {% endif %}
+<hr />
+<form action="/lists/delete" method="post">
+    <div class="add-an-item">
+        <label for="shopping_list">Shopping List: </label>
+        <select id="shopping_list" name="list_id">
+            <option value=" ">select list to be deleted</option>
+            {% for list in all_lists %}
+                <option value="{{ list.id }}">list number {{ list.id }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br />
+    <br />
+    <div class="form-buttons">
+        <input type="submit" value="Delete List">
+    </div>
+</form>
+<br />
+<br />
+
 {% endblock  %}

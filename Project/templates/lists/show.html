@@ -25,17 +25,25 @@
         {% endif %}
         <li>
             {{ sel_item.item.name}} 
-            <form action="/lists/{{list.id}}/update/{{sel_item.item.id}}">
-                {% if sel_item.selected %}
+            {% if active %}
+                <form action="/lists/{{list.id}}/update/{{sel_item.item.id}}">
+                    {% if sel_item.selected %}
                     <button>
                         <span>&#9989</span>
                     </button>
-                {% else %}
+                    {% else %}
                     <button>
                         <span>&#10060</span>
                     </button>
+                    {% endif %} 
+                </form>
+            {% else %}
+                {% if sel_item.selected %}
+                    <span>&#9989</span>
+                {% else %}
+                    <span>&#10060</span>
                 {% endif %} 
-            </form>
+            {% endif %}
             <form action="/lists/{{list.id}}/delete/{{sel_item.item.id}}" method="post">
                 <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>               
             </form>

@@ -31,12 +31,20 @@ def get_list_selection_ordered(list_id,order):
         selection_list.sort(key= lambda x: x.selected)
     return selection_list
 
-def insert_item(list, item):
+def insert_item(p_list, p_item):
     # todo: check for dups first. Either here or where it's called
-    sql_string = "INSERT INTO list_items (list_id, item_id, selected) \
+    # pdb.set_trace()
+    # for selection in p_list.selection:
+    #     if selection.item.id == p_item.id:
+    #         duplicate = True          
+    duplicate = [True for selection in p_list.selection if selection.item.id == p_item.id]
+    if duplicate:
+        pass
+    else:
+        sql_string = "INSERT INTO list_items (list_id, item_id, selected) \
                 VALUES (%s, %s, False)"
-    values = [list.id, item.id]
-    run_sql(sql_string,values)
+        values = [p_list.id, p_item.id]
+        run_sql(sql_string,values)
 
 def remove_item(list_id, item_id):
     # should be sorted by not allowing dups, but you never know, right?
