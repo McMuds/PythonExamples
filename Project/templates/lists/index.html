@@ -25,10 +25,11 @@
     There are no shopping lists. Perhaps you want to <a href="/lists/new" method="post">create one</a>?
 {% endif %}
 <hr />
+
 <form action="/lists/delete" method="post">
     <div class="add-an-item">
         <label for="shopping_list">Shopping List: </label>
-        <select id="shopping_list" name="list_id">
+        <select class="dropdown" id="shopping_list" name="list_id">
             <option value=" ">select list to be deleted</option>
             {% for list in all_lists %}
                 <option value="{{ list.id }}">list number {{ list.id }}</option>
@@ -37,9 +38,12 @@
     </div>
     <br />
     <br />
-    <div class="form-buttons">
-        <input type="submit" value="Delete List">
+    <div class="centre-button">
+        <button class="button2"><span>Delete List</span></button>
     </div>
+    <!-- <div class="form-buttons">
+        <input type="submit" value="Delete List">
+    </div> -->
 </form>
 <br />
 <br />

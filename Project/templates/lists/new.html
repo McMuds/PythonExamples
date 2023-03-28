@@ -10,20 +10,27 @@
     <form action="/lists/new" method="post" class="container-row">   
         <div class="add-an-item">
             <label for="item">Item: </label>
-            <select id="item" name="item_id">
-                <option value=" ">Add an item to the list</option>
+            <select class="dropdown" id="item" name="item_id">
+                <option value=" ">Pick an item</option>
                 {% for item in all_items %}
                     <option value="{{ item.id }}">{{ item.name }}</option>
                 {% endfor %}
             </select>
-            <label for="quantity">Qty: </label>
-            <input type="number" name="quantity" id="quantity" value="1"/>
+
+            <div class="form__group">
+                <input type="number" class="form__field w-100" name="quantity" id="quantity" value="1">
+                <label for="quantity" class="form__label"> Qty </label>
+            </div>
+            <!-- <label for="quantity">Qty: </label> -->
+            <!-- <input type="number" name="quantity" id="quantity" value="1"/> -->
         </div>
         <br />
         <br />
-        <button class="button2">
-            <span>Create List</span>
-        </button>
+        <div class="centre-button">
+            <button class="button2">
+                <span>Create List</span>
+            </button>
+        </div>
         <!-- <div class="form-buttons">
             <input type="submit" value="Create List!">
         </div> -->

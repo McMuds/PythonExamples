@@ -1,3 +1,4 @@
+/* trash-can delete button */
 .btn {
     background-color: transparent;
     position: relative;
@@ -12,13 +13,12 @@
     transform: translateX(-50%);
     width: fit-content;
     height: fit-content;
-    background-color: rgb(168, 7, 7);
+    background-color: #d30c7b;
     padding: 4px 8px;
     border-radius: 5px;
     transition: .2s linear;
     transition-delay: .2s;
     color: #ffe3dc;
-    /* color: white; */
     text-transform: uppercase;
     font-size: 12px;
     opacity: 0;
@@ -43,7 +43,7 @@
     opacity: 1;
     top: -160%;
   }
-/*  */
+/* horizontal slide buttons */
 .button2 {
   position: relative;
   display: flex;
@@ -62,7 +62,6 @@
   width: 0%;
   height: 100%;
   background: #d30c7b;
-  /* background: #FFD401; */
   position: absolute;
   transition: all 0.4s ease-in-out;
   right: 0;
@@ -77,8 +76,8 @@
  .button2 span {
   text-align: center;
   text-decoration: none;
-  width: 100%;
-  padding: 18px 25px;
+  width: auto;
+  padding: 18px 20px;
   color: #fff;
   font-size: 1.125em;
   font-weight: 700;
@@ -88,11 +87,16 @@
  }
  
  .button2:hover span {
-  /* color: #183153; */
   color: #a2ad91;
   animation: scaleUp 0.3s ease-in-out;
  }
  
+ .centre-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ }
+
  @keyframes scaleUp {
   0% {
    transform: scale(1);
@@ -106,4 +110,78 @@
    transform: scale(1);
   }
  }
- 
+ /* input stuff */
+ .form__group {
+  position: relative;
+}
+
+.form__field {
+  border: 1px solid #d30c7b !important;
+  border-radius: 5px;
+  background-color: #ffe3dc;
+  box-sizing: border-box;
+  /* box-sizing:30px; */
+  color: #d30c7b;
+  height: 30px;
+  width: 60px;
+  padding: 0rem 5px;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  top: 10px;
+  border-right: none;
+  border-left: none;
+}
+
+.form__label {
+  background-color: #ffe3dc;
+  border-left: 1px solid #d30c7b;
+  border-right: 1px solid #d30c7b;
+  color: #d30c7b;
+  display: flex;
+  font-size: .9em;
+  margin-left: 4px;
+  padding: 0 10px;
+  pointer-events: none;
+  position: absolute;
+  top: -10px;
+  transition: 0.2s;
+}
+
+.form__field:focus {
+  border: 1px solid #d30c7b !important;
+  outline: none;
+}
+
+.form__field:focus ~ .form__label {
+  background-color: #ffe3dc;
+  border-right: 1px solid #d30c7b;
+  border-left: 1px solid #d30c7b;
+  color: #d30c7b;
+  font-size: .9em;
+  margin-left: 10px;
+  padding: 0 10px;
+  position: absolute;
+  top: -10px;
+  transition: 0.2s;
+}
+
+/* number dropdowns - for quantity */
+
+.dropdown {
+    width: auto;
+    height: 30px;
+    border: 1px solid #d30c7b;
+    font-size: 15px;
+    color: #d30c7b;
+    background-color: #ffe3dc;
+    border-radius: 5px;
+    box-shadow: 4px 4px #a2ad91;
+    margin-right: 7px;
+}
+
+/* checkbox */

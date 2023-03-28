@@ -10,13 +10,15 @@ header {
     background:#124e78;
     color: #fff;
     height: 25%;
+    margin-bottom: 20px;
 }
 
 article {
     background: #ffe3dc;
     color: #000;
-    height: 60%;
+    /* height: 60%; */
     padding-left: 10px;
+    margin-bottom: 20px;
 }
 
 ul {
@@ -47,6 +49,7 @@ header nav ul a{
 footer {
     background: #a2ad91;
     height: 15%;
+    margin-bottom: 20px;
 }
 
 footer nav ul{
@@ -116,6 +119,19 @@ footer p{
     justify-content: space-around
 }
 
+.add-an-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.add-an-item>label{
+    margin-right: 7px;
+    font-size: larger;
+}
+
 .delete-item {
     display: flex;
     flex-direction: row;
@@ -146,7 +162,13 @@ footer p{
 
 .thing-listing li span{
     margin-right: 5px;
+    background-color: #ffe3dc;
 }
+
+.thing-listing li a{
+    margin: 10px;
+}
+
 .grey-text {
     background-color: gray
 }

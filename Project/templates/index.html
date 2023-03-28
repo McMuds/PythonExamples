@@ -8,16 +8,16 @@
 <!-- </form> -->
 {% else %}
     <form action="/lists/add" method="post" class="container-row">   
-        <div class="add-an-item">
+        <div>
             <h2>Quick Add</h2>
-            Add an item to any open list <br /><br />
+            Add an item to any open list 
+            <br /><br />
             <div class="index-add-row">
                 <label for="item">I need: </label>
-                <select id="item" name="item_id">
-                    <option disabled="disabled" selected="selected" class="grey-text"
-                    value=" ">Pick an item to add</option>
+                <select class="dropdown"id="item" name="item_id">
+                    <option disabled="disabled" selected="selected" class="grey-text" value=" ">Pick an item</option>
                     {% for item in all_items %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
+                        <option value="{{ item.id }}">{{ item.name }}</option>
                     {% endfor %}
                 </select>
                 <label for="quantity">Qty: </label>
@@ -27,17 +27,18 @@
         <br />
         <div class="add-an-item"> 
             <label for="shopping_list">Available shopping lists: </label>
-            <select name="list_id" id="shopping_list">
+            <select class="dropdown" name="list_id" id="shopping_list">
                 {% for list in open_lists %}
                     <option value="{{list.id}}">created on {{ list.date_created }}</option>
                 {% endfor %}
             </select>
-            <br />
-            <br />
         </div>
+            <br />
+        <div class="centre-button">
             <button class="button2">
                 <span>Add Item</span>
             </button>
+        </div>
             <!-- <div class="form-buttons"> -->
                 <!-- <input type="submit" value="Add item"> -->
             <!-- </div> -->

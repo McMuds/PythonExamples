@@ -43,7 +43,7 @@ def show_list_ordered(id,display_order):
 
 @shopping_list_blueprint.route('/lists/add', methods=['post'])
 def add_item_to_list():
-    pdb.set_trace()
+    # pdb.set_trace()
     item_id = request.form['item_id']
     if item_id == None or item_id == '':
         pass
@@ -75,6 +75,7 @@ def delete_item_from_list(list_id, item_id):
 
 @shopping_list_blueprint.route('/lists/<list_id>/update/<item_id>')
 def toggle_selected(list_id,item_id):
+    # pdb.set_trace()
     selection_repo.toggle_item_selected(int(list_id), int(item_id))
     return redirect('/lists/shop/' + list_id + '/1')
 
@@ -94,7 +95,7 @@ def edit_quantity(list_id, item_id):
 
 @shopping_list_blueprint.route('/lists/<list_id>/edit/<item_id>', methods=['post'])
 def update_quantity(list_id, item_id):
-    pdb.set_trace()
+    # pdb.set_trace()
     qty = request.form['quantity']
     if qty == None or qty == '':
         pass
