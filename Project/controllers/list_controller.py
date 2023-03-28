@@ -43,11 +43,14 @@ def show_list_ordered(id,display_order):
 
 @shopping_list_blueprint.route('/lists/add', methods=['post'])
 def add_item_to_list():
-    # pdb.set_trace()
-    list_id = request.form['list_id']
+    pdb.set_trace()
     item_id = request.form['item_id']
-    quantity = request.form['quantity']
-    insert_item_to_list(int(list_id), int(item_id), quantity)
+    if item_id == None or item_id == '':
+        pass
+    else:
+        list_id = request.form['list_id']
+        quantity = request.form['quantity']
+        insert_item_to_list(int(list_id), int(item_id), quantity)
     return redirect('/')
 
 @shopping_list_blueprint.route('/lists/new')
@@ -60,7 +63,8 @@ def create_new_list():
     # pdb.set_trace()
     list_id = list_repo.create_new_list()
     item_id = request.form['item_id']
-    insert_item_to_list(int(list_id), int(item_id))
+    qty = request.form['quantity']
+    insert_item_to_list(int(list_id), int(item_id), qty)
     # list_of_items = item_repo.select_all()
     return redirect('/lists')
 
@@ -90,8 +94,9 @@ def edit_quantity(list_id, item_id):
 
 @shopping_list_blueprint.route('/lists/<list_id>/edit/<item_id>', methods=['post'])
 def update_quantity(list_id, item_id):
+    pdb.set_trace()
     qty = request.form['quantity']
-    if qty == None:
+    if qty == None or qty == '':
         pass
     else:
         selection_repo.update_qty(int(list_id), int(item_id), qty)

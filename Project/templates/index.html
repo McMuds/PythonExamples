@@ -7,55 +7,59 @@
     </div>
 <!-- </form> -->
 {% else %}
-<form action="/lists/add" method="post" class="container-row">   
-    <div class="add-an-item">
-        <h2>Quick Add</h2>
-        Add an item to any open list <br /><br />
-        <label for="item">Item to be added: </label>
-        <select id="item" name="item_id">
-            <option disabled="disabled" selected="selected" class="grey-text"
-                value=" ">Pick an item to add</option>
-            {% for item in all_items %}
-                <option value="{{ item.id }}">{{ item.name }}</option>
-            {% endfor %}
-        </select>
-            <label for="quantity">Qty: </label>
-            <input type="number" name="quantity" id="quantity" value="1"/>
+    <form action="/lists/add" method="post" class="container-row">   
+        <div class="add-an-item">
+            <h2>Quick Add</h2>
+            Add an item to any open list <br /><br />
+            <div class="index-add-row">
+                <label for="item">I need: </label>
+                <select id="item" name="item_id">
+                    <option disabled="disabled" selected="selected" class="grey-text"
+                    value=" ">Pick an item to add</option>
+                    {% for item in all_items %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="quantity">Qty: </label>
+                    <input class="small-int" type="number" name="quantity" id="quantity" value="1"/>
+            </div>
         </div>
-    </div>
-    <div class="add-an-item"> 
+        <br />
+        <div class="add-an-item"> 
             <label for="shopping_list">Available shopping lists: </label>
             <select name="list_id" id="shopping_list">
                 {% for list in open_lists %}
-                <option value="{{list.id}}">List created on {{ list.date_created }}</option>
+                    <option value="{{list.id}}">created on {{ list.date_created }}</option>
                 {% endfor %}
             </select>
             <br />
             <br />
         </div>
-        <div class="form-buttons">
-            <input type="submit" value="Add item">
-        </div>
-        <br />
-        <br />
-        {% endif %}   
+            <button class="button2">
+                <span>Add Item</span>
+            </button>
+            <!-- <div class="form-buttons"> -->
+                <!-- <input type="submit" value="Add item"> -->
+            <!-- </div> -->
+            <!-- <br />
+            <br /> -->
+{% endif %}   
 </form>
 <hr />
-<h2>Let's Go Shopping</h2>
-select one of the lists below when you're ready to go shopping
-<ul>
-    {% for list in open_lists  %}
+<div class="shopping">
+    <h2>Let's Go Shopping</h2>
+    select one of the lists below when you're ready to go shopping
+    <ul>
+        {% for list in open_lists  %}
         <li><a href="/lists/shop/{{list.id}}/1">Shopping List</a> with {{ list.selection|length }}
             {% if list.selection|length == 1 %}
-                item,
+            item,
             {% else %}
-                items,
+            items,
             {% endif %}
-             created on {{ list.date_created }}
-            {% if list.date_shopped != None %}
-                and was shopped on {{ list.date_shopped }}
-            {% endif %}
+            created {{ list.date_created }}
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock  %}
