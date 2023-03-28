@@ -1,6 +1,5 @@
 {% extends 'base.html' %}{% block  content%}  
 <nav >
-    <a href="/items">back</a>
     <ul class="sort-orders">
         <li><a href="/items/new">add a new item</a></li>
         <li><a href="/items">category order</a></li>
@@ -10,8 +9,8 @@
 <ul>
     {% for item in items|sort(attribute='id') %}
         {% set prev_index = items.index(item) -1 %}
-        {% if (item.category.name != items[prev_index].category.name ) 
-                or prev_index == -1 %}
+        {% if order == 1 and ((item.category.name != items[prev_index].category.name ) 
+                or prev_index == -1) %}
                 <h3><a href="/items/{{item.category.id}}/cat">{{item.category.name}}</a></h3>
         {% endif %}
         <form action="/items/{{item.id}}/delete" method="POST">

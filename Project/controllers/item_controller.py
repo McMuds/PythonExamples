@@ -9,14 +9,14 @@ item_blueprint = Blueprint("item",__name__)
 @item_blueprint.route('/items')
 def index():
     items = item_repo.select_all()
-    return render_template('/items/index.html', items = items)
+    return render_template('/items/index.html', items = items, order = 1)
 
 @item_blueprint.route("/items/view/<display_order>")
 def ordered_index(display_order):
     items = item_repo.select_all()
     if display_order == '2':
         items.sort(key= lambda x: x.name.lower())
-        return render_template('/items/index.html', items=items)
+        return render_template('/items/index.html', items=items, order = 2)
     else:
         return redirect('/items')
 
