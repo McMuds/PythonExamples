@@ -4,9 +4,11 @@
 </nav>
 <section>
     <h2 class="section-title">Create a new shopping list</h2>
+    Add an item to start your list off.
+    <br />
+    <br />
     <form action="/lists/new" method="post" class="container-row">   
         <div class="add-an-item">
-            <h2>Add an Item!</h2>
             <label for="item">Item: </label>
             <select id="item" name="item_id">
                 <option value=" ">Add an item to the list</option>
@@ -14,7 +16,11 @@
                     <option value="{{ item.id }}">{{ item.name }}</option>
                 {% endfor %}
             </select>
+            <label for="quantity">Qty: </label>
+            <input type="number" name="quantity" id="quantity" value="1"/>
         </div>
+        <br />
+        <br />
         <div class="form-buttons">
             <input type="submit" value="Create List!">
         </div>

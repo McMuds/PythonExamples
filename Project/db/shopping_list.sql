@@ -25,7 +25,8 @@ CREATE TABLE  list_items(
     id SERIAL PRIMARY KEY,
     list_id int REFERENCES shopping_list(id) ON DELETE CASCADE,
     item_id int REFERENCES items(id) ON DELETE CASCADE,
-    selected boolean
+    selected boolean NOT NULL,
+    quantity int
 );
  
 INSERT INTO categories (name) VALUES ('dairy'); --1
@@ -52,13 +53,13 @@ INSERT INTO items (name, cat_id) VALUES ('potatoes',6); --10
 INSERT INTO items (name, cat_id) VALUES ('onions',6); --11
 INSERT INTO items (name, cat_id) VALUES ('strawberries',6); --12
 
-INSERT INTO list_items (list_id, item_id, selected) VALUES (1,1, True); -- shopping list 1, milk
-INSERT INTO list_items (list_id, item_id, selected) VALUES (1,3, True); -- shopping list 1, bananas
-INSERT INTO list_items (list_id, item_id, selected) VALUES (1,5, True); -- shopping list 1, bread
-INSERT INTO list_items (list_id, item_id, selected) VALUES (2,1, False); -- shopping list 2, milk
-INSERT INTO list_items (list_id, item_id, selected) VALUES (2,2, True); -- shopping list 2, yoghurt
-INSERT INTO list_items (list_id, item_id, selected) VALUES (2,4, True); -- shopping list 2, apples
-INSERT INTO list_items (list_id, item_id, selected) VALUES (2,5, True); -- shopping list 2, bread
-INSERT INTO list_items (list_id, item_id, selected) VALUES (2,6, True); -- shopping list 2, peanut butter
-INSERT INTO list_items (list_id, item_id, selected) VALUES (3,4, True); -- shopping list 3, apples
-INSERT INTO list_items (list_id, item_id, selected) VALUES (3,10, True); -- shopping list 3, potatoes
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (1,1,3, True); -- shopping list 1, milk
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (1,3, 5, True); -- shopping list 1, bananas
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (1,5, 1, True); -- shopping list 1, bread
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,1, 1, False); -- shopping list 2, milk
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,2, 4, True); -- shopping list 2, yoghurt
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,4, 6, True); -- shopping list 2, apples
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,5, 1, True); -- shopping list 2, bread
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,6, 1, True); -- shopping list 2, peanut butter
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,4, 3, True); -- shopping list 3, apples
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,10, 4, True); -- shopping list 3, potatoes

@@ -6,7 +6,7 @@
     {% for category in categories %}
         <form action="/categories/{{category.id}}/delete" method="POST">
         <ul class="delete-item"><a href="/categories/{{category.id}}">{{ category.name }}</a>
-                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+                <button class="trash-button"><i class="fa fa-trash-o fa-1x" style="color:#124e78"></i></button>
             </ul>
         </form>
     {% endfor %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}{% block  content%}  
+<nav>
+    <ul class="nav-list">
+        {% if p_i_id!= 0 %}
+            <li><a href="/lists/{{list_id}}/edit/{{p_i_id}}">prev item</a></li>
+        {% else %}
+            <li>first item</li>
+        {% endif %}
+        <li><a href="/lists/{{list_id}}/1">back</a></li>
+        {% if n_i_id != 0 %}
+            <li><a href="/lists/{{list_id}}/edit/{{n_i_id}}">next item</a></li>
+        {% else %}
+            <li>last item</li>
+        {% endif %}
+    </ul>
+</nav>
+<section>
+    <form action="/lists/{{list_id}}/edit/{{item.id}}" method="post" class="container-row">   
+        <div>
+            <h2>Update Quantity</h2>
+            Update the quantity for {{item.name}} <br /><br />
+            <label for="quantity">Qty: </label>
+            <input type="number" name="quantity" id="quantity" placeholder="Update the qty needed" />
+            {{ item.name }}
+        </div>
+        <br/>
+        <br/>
+        <div class="form-buttons">
+            <button type="submit">Update Qty</button>  
+        </div>
+        <br />
+        <br />  
+</section>
+
+{% endblock  %}

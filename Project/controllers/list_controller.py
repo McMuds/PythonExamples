@@ -8,11 +8,11 @@ import pdb
 from flask import Blueprint
 shopping_list_blueprint = Blueprint("shopping_list",__name__)
  
-def insert_item_to_list(list_id, item_id):
+def insert_item_to_list(list_id, item_id, quantity):
     # pdb.set_trace()
     s_list = list_repo.select(list_id,1)
     item = item_repo.select(item_id)
-    selection_repo.insert_item(s_list, item)
+    selection_repo.insert_item(s_list, item, quantity)
 
 @shopping_list_blueprint.route('/lists')
 def index():
@@ -46,7 +46,8 @@ def add_item_to_list():
     # pdb.set_trace()
     list_id = request.form['list_id']
     item_id = request.form['item_id']
-    insert_item_to_list(int(list_id), int(item_id))
+    quantity = request.form['quantity']
+    insert_item_to_list(int(list_id), int(item_id), quantity)
     return redirect('/')
 
 @shopping_list_blueprint.route('/lists/new')
@@ -71,10 +72,28 @@ def delete_item_from_list(list_id, item_id):
 @shopping_list_blueprint.route('/lists/<list_id>/update/<item_id>')
 def toggle_selected(list_id,item_id):
     selection_repo.toggle_item_selected(int(list_id), int(item_id))
-    return redirect('/lists/shop/'+list_id+'/1')
+    return redirect('/lists/shop/' + list_id + '/1')
 
 @shopping_list_blueprint.route('/lists/delete', methods=['post'])
 def delete():
     list_id = request.form['list_id']
     list_repo.delete(int(list_id))
     return redirect('/lists')
+
+@shopping_list_blueprint.route('/lists/<list_id>/edit/<item_id>')
+def edit_quantity(list_id, item_id):
+    item = item_repo.select(int(item_id))
+    p_item_id = selection_repo.get_prev_item(int(list_id), item.id)
+    n_item_id = selection_repo.get_next_item(int(list_id), item.id)
+    print(f"item_id is {item.id}")
+    return render_template('/lists/edit.html', list_id=list_id, item=item, n_i_id = n_item_id, p_i_id = p_item_id)
+
+@shopping_list_blueprint.route('/lists/<list_id>/edit/<item_id>', methods=['post'])
+def update_quantity(list_id, item_id):
+    qty = request.form['quantity']
+    if qty == None:
+        pass
+    else:
+        selection_repo.update_qty(int(list_id), int(item_id), qty)
+
+    return redirect('/lists/' + list_id +'/1')

@@ -89,7 +89,7 @@ footer p{
     color: #124e78;
 }
 
-.nav-list a{
+.nav-list li{
     color: #124e78;
     margin-right: 1rem;
 }
@@ -122,9 +122,19 @@ footer p{
 }
 
 .thing-listing li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: 15px;
 }
 
+.thing-listing li span{
+    margin-right: 5px;
+}
 .grey-text {
     background-color: gray
+}
+
+.trash-button {
+    margin-left:15px;
 }

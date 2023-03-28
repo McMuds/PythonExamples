@@ -24,7 +24,6 @@
             <h4>{{sel_item.item.category.name}}</h4>            
         {% endif %}
         <li>
-            {{ sel_item.item.name}} 
             {% if active %}
                 <form action="/lists/{{list.id}}/update/{{sel_item.item.id}}">
                     {% if sel_item.selected %}
@@ -44,8 +43,11 @@
                     <span>&#10060</span>
                 {% endif %} 
             {% endif %}
+            <a href="/lists/{{list.id}}/edit/{{sel_item.item.id}}">
+                {{ sel_item.quantity }} x {{ sel_item.item.name}} 
+            </a>
             <form action="/lists/{{list.id}}/delete/{{sel_item.item.id}}" method="post">
-                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>               
+                <button class="trash-button"><i class="fa fa-trash-o fa-1x" style="color:#124e78"></i></button>               
             </form>
         </li>                     
     {% endfor %}
