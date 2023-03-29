@@ -1,17 +1,12 @@
 {% extends 'base.html' %}{% block  content%}  
 {% if open_lists|length == 0 %}
-<!-- <form action="/shopping_lists/new" method="post"> -->
     <div>
         No open lists. Perhaps you should <a href="/lists/new">create one</a>?
-        <!-- No open lists. Perhaps you should <input type="submit" value="create one">? -->
     </div>
-<!-- </form> -->
 {% else %}
     <form action="/lists/add" method="post" class="container-row">   
         <div>
             <h2>Quick Add</h2>
-            <!-- Add an item to any open list 
-            <br /><br /> -->
             <div class="index-add-row">
                 <label for="item">I need: </label>
                 <select class="dropdown"id="item" name="item_id">
@@ -20,8 +15,6 @@
                         <option value="{{ item.id }}">{{ item.name }}</option>
                     {% endfor %}
                 </select>
-                <!-- <label for="quantity">Qty: </label>
-                    <input class="small-int" type="number" name="quantity" id="quantity" value="1"/> -->
                     <div id="centre-input" class="form__group">
                         <input type="number" class="form__field w-100" name="quantity" id="quantity" value="1">
                         <label for="quantity" class="form__label"> Qty </label>
@@ -43,11 +36,6 @@
                 <span>Add Item</span>
             </button>
         </div>
-            <!-- <div class="form-buttons"> -->
-                <!-- <input type="submit" value="Add item"> -->
-            <!-- </div> -->
-            <!-- <br />
-            <br /> -->
 {% endif %}   
 </form>
 <hr />
