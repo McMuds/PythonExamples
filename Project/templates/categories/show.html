@@ -4,15 +4,14 @@
     <h2 class="section-title">Edit a Category</h2>
     <form action="/categories/{{category.id}}" method="post" class="container-row">
 
-        <div class="add-a-category">
+        <div class="centered-input">
             
             <div class="form__group">
                 <input type="text" class="form__field_text w-100" name="category_name" id="category_name", value="{{category.name}}">
                 <label for="category_name" class="form__label">Category Name: </label>
             </div>
-            <br />
-            <br />
         </div>
+        <br />
         <div class="centre-button">
             <button class="button2"><span>Update Category</span></button>
         </div>

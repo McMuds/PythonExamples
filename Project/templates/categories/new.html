@@ -2,13 +2,13 @@
 <section>
     <h2 class="section-title">Add a Category</h2>
         <form class="add-a-new-thing" action="/categories/new" method="post" class="container-row">
-            <div class="add-a-category">
-                <label for="name">New Category Name: </label>
-                <input type="text" name="category_name" id="name" 
-                    placeholder="Enter the category name" autofocus/>
-                <br />
-                <br />
+            <div class="centered-input">
+                <div class="form__group">
+                    <input type="text" class="form__field_text w-100" name="category_name" id="category_name">
+                    <label for="category_name" class="form__label">category name </label>
+                </div>
             </div>  
+            <br />
             <div class="centre-button">
                 <button class="button2">
                     <span>Add Category</span>

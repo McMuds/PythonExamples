@@ -2,6 +2,7 @@ from flask import render_template, redirect, request
 from repositories import shopping_list_repository as list_repo
 from repositories import selection_repository as selection_repo
 from repositories import item_repository as item_repo
+from datetime import date
  
 from flask import Blueprint
 shopping_list_blueprint = Blueprint("shopping_list",__name__)
@@ -63,6 +64,10 @@ def delete_item_from_list(list_id, item_id):
 @shopping_list_blueprint.route('/lists/<list_id>/update/<item_id>')
 def toggle_selected(list_id,item_id):
     selection_repo.toggle_item_selected(int(list_id), int(item_id))
+    list = list_repo.select(int(list_id),1)
+    if list.date_shopped == None:
+        date_shopped = date.today()
+        list_repo.update(int(list_id), list.name, date_shopped )
     return redirect('/lists/shop/' + list_id + '/1')
 
 @shopping_list_blueprint.route('/lists/delete', methods=['post'])

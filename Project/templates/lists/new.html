@@ -5,16 +5,18 @@
 <section>
     <form action="/lists/new" method="post" class="container-row">   
         <h2 class="section-title">New list</h2>
-        <div class="form__group">
-            <input type="text" class="form__field_text w-100" name="list_name" id="list_name", value="List Name">
-            <label for="list_name" class="form__label"> Name: </label>
+        <div class="centered-input">
+            <div class="form__group">
+                <input type="text" class="form__field_text w-100" name="list_name" id="list_name", value="List Name">
+                <label for="list_name" class="form__label"> Name: </label>
+            </div>
         </div>
         
         <br />
         Add an item to start your list off.
         <br />
         <br />
-        <div class="add-an-item">
+        <div class="index-add-row">
             <label for="item">Item: </label>
             <select class="dropdown" id="item" name="item_id">
                 <option value="1">Pick an item</option>

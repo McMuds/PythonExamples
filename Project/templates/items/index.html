@@ -1,9 +1,13 @@
 {% extends 'base.html' %}{% block  content%}  
 <nav >
-    <ul class="sort-orders">
-        <li><a href="/items/new">add a new item</a></li>
-        <li><a href="/items">category order</a></li>
-        <li><a href="/items/view/2">alphabetical</a></li>
+    {% if order == 4 %}
+        <a class="single-nav" href="/items/new">add a new item</a></li>
+    {%else%}
+        <ul class="sort-orders">
+            <li><a href="/items/new">add a new item</a></li>
+            <li><a href="/items">category order</a></li>
+            <li><a href="/items/view/2">alphabetical</a></li>
+        {% endif %}
     </ul>
 </nav>
 <ul>

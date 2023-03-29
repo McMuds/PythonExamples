@@ -194,16 +194,17 @@
 /* number dropdowns - for quantity */
 
 .dropdown {
-    width: auto;
-    height: 30px;
-    border: 1px solid #d30c7b;
-    font-size: 15px;
-    color: #d30c7b;
-    background-color: #ffe3dc;
-    border-radius: 5px;
-    box-shadow: 4px 4px #a2ad91;
+  width: auto;
+  height: 30px;
+  border: 1px solid #d30c7b;
+  font-size: 15px;
+  color: #d30c7b;
+  background-color: #ffe3dc;
+  border-radius: 5px;
+  box-shadow: 4px 4px #a2ad91;
   margin-right: 7px;
 }
+
 
 #centre-input {
   display: flex;

@@ -3,10 +3,14 @@
     <ul class="nav-list">
         {% if prev_id!= 0 %}
             <li><a href="/lists/{{prev_id}}/{{order}}">prev list</a></li>
+        {% else %}
+            <li>first list</li>
         {% endif %}
         <li><a href="/lists">back</a></li>
         {% if next_id != 0 %}
             <li><a href="/lists/{{next_id}}/{{order}}">next list</a></li>
+        {% else %}
+            <li>last list</li>
         {% endif %}
     </ul>
 </nav>

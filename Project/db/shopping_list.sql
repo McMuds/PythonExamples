@@ -47,20 +47,20 @@ INSERT INTO shopping_list (date_created, date_shopped, name) VALUES ('2023-03-20
 INSERT INTO shopping_list (date_created, date_shopped, name) VALUES ('2023-03-25','2023-03-26', 'Camping Trip');
 INSERT INTO shopping_list (date_created, name) VALUES ('2023-03-27', 'Mum');
 
-INSERT INTO items (name, cat_id) VALUES ('milk',1);  --1
-INSERT INTO items (name, cat_id) VALUES ('yoghurt',1);  --2
-INSERT INTO items (name, cat_id) VALUES ('mozzerella',1);  --3
-INSERT INTO items (name, cat_id) VALUES ('bananas',2); --4
-INSERT INTO items (name, cat_id) VALUES ('apples',2); --5
-INSERT INTO items (name, cat_id) VALUES ('bread',6); --6
-INSERT INTO items (name, cat_id) VALUES ('peanut butter',8); --7
-INSERT INTO items (name, cat_id) VALUES ('eggs',11); --8
-INSERT INTO items (name, cat_id) VALUES ('chicken',4); --9
-INSERT INTO items (name, cat_id) VALUES ('potatoes',3); --10
-INSERT INTO items (name, cat_id) VALUES ('onions',3); --11
-INSERT INTO items (name, cat_id) VALUES ('strawberries',2); --12
-INSERT INTO items (name, cat_id) VALUES ('mince',4); --12
-INSERT INTO items (name, cat_id) VALUES ('basil',3); --14
+INSERT INTO items (name, cat_id) VALUES ('Milk',1);  --1
+INSERT INTO items (name, cat_id) VALUES ('Yoghurt',1);  --2
+INSERT INTO items (name, cat_id) VALUES ('Mozzerella',1);  --3
+INSERT INTO items (name, cat_id) VALUES ('Bananas',2); --4
+INSERT INTO items (name, cat_id) VALUES ('Apples',2); --5
+INSERT INTO items (name, cat_id) VALUES ('Bread',6); --6
+INSERT INTO items (name, cat_id) VALUES ('Peanut Butter',8); --7
+INSERT INTO items (name, cat_id) VALUES ('Eggs',11); --8
+INSERT INTO items (name, cat_id) VALUES ('Chicken',4); --9
+INSERT INTO items (name, cat_id) VALUES ('Potatoes',3); --10
+INSERT INTO items (name, cat_id) VALUES ('Onions',3); --11
+INSERT INTO items (name, cat_id) VALUES ('Strawberries',2); --12
+INSERT INTO items (name, cat_id) VALUES ('Mince',4); --12
+INSERT INTO items (name, cat_id) VALUES ('Basil',3); --14
 INSERT INTO items (name, cat_id) VALUES ('Passata',9); --15
 INSERT INTO items (name, cat_id) VALUES ('Peppers',3); --16
 INSERT INTO items (name, cat_id) VALUES ('Flour',7); --17
@@ -76,5 +76,5 @@ INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,2, 4, Tr
 INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,4, 6, True); -- shopping list 2, apples
 INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,5, 1, True); -- shopping list 2, bread
 INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (2,6, 1, True); -- shopping list 2, peanut butter
-INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,4, 3, True); -- shopping list 3, apples
-INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,10, 4, True); -- shopping list 3, potatoes
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,1, 2, False); -- shopping list 3, apples
+INSERT INTO list_items (list_id, item_id, quantity, selected) VALUES (3,12, 1, False); -- shopping list 3, potatoes

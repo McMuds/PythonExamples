@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% block  content%}  
+    {% extends 'base.html' %}{% block  content%}  
 <nav>
     <a href="/items">back</a>
 </nav>
@@ -6,14 +6,13 @@
     <h2 class="section-title">Edit an Item</h2>
     <form action="/items/{{item.id}}" method="post" class="container-row">
 
-        <div class="add-an-item">
+        <div class="centered-input">
             <div class="form__group">
                 <input type="text" class="form__field_text w-100" name="item_name" id="name", value={{item.name}}>
                 <label for="item_name" class="form__label">Item Name: </label>
             </div>
-            <br />
-            <br />
-        </div>    
+        </div>
+        <br />
         <div class="add-an-item">
             <label for="category">Category: </label>
             <select class="dropdown" id="category" name="category_id">
