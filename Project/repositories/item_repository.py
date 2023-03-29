@@ -1,7 +1,6 @@
 from db.run_sql import run_sql
 from models.item import Item
 from repositories import categories_repository as cat_repo
-import pdb
 
 def select(id):
     sql_string = "SELECT * FROM items WHERE id = %s"

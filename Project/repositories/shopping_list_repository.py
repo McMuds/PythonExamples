@@ -1,7 +1,6 @@
 from db.run_sql import run_sql
 from models.shopping_list import Shopping_List
 from repositories import selection_repository as selection_repo
-import pdb
 
 def select_all(): 
     list_of_lists = []
@@ -14,7 +13,6 @@ def select_all():
     return list_of_lists
 
 def get_open_lists(): 
-    # pdb.set_trace()
     list_of_lists = []
     sql_string = "SELECT * FROM shopping_list WHERE date_shopped is Null ORDER BY date_created DESC"
     results = run_sql(sql_string)
@@ -36,8 +34,10 @@ def select(id,order):
 
 def create_new_list(name):
     if name == 'List Name':
-        new_id = get_max_id() + 1
-        name = 'List ' + new_id
+
+        max_id = get_max_id()
+        new_id = max_id[0] + 1
+        name = 'List ' + str(new_id)
     sql_string = "INSERT INTO shopping_list (date_created, name) VALUES (now(), %s) returning *"
     values =[name]
     results = run_sql(sql_string, values)
@@ -49,7 +49,6 @@ def get_prev_list(id):
     values = [id]
     result=[]
     result = run_sql(sql_string, values)
-    # pdb.set_trace()
     if result == None or len(result) == 0:
         return 0
     else:
@@ -59,8 +58,7 @@ def get_next_list(id):
     sql_string = "SELECT id FROM shopping_list WHERE id > %s ORDER BY id"
     values = [id]
     result=[]
-    result = run_sql(sql_string, values)
-    # pdb.set_trace() #this caused all sorts of issues
+    result = run_sql(sql_string, values) #this caused all sorts of issues
     if result == None or len(result) == 0:
         return 0
     else:
@@ -74,7 +72,7 @@ def delete(id):
 def get_max_id():
     sql_string = "SELECT MAX(ID) FROM shopping_list"
     result = run_sql(sql_string)
-    return result
+    return result[0]
 
 def update(id, name, date_shopped=None):
     sql_string = "UPDATE shopping_list SET(name, date_shopped) \

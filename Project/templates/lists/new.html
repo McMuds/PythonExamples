@@ -6,7 +6,7 @@
     <form action="/lists/new" method="post" class="container-row">   
         <h2 class="section-title">New list</h2>
         <div class="form__group">
-            <input type="text" class="form__field_text w-100" name="list_name" id="list_name">
+            <input type="text" class="form__field_text w-100" name="list_name" id="list_name", value="List Name">
             <label for="list_name" class="form__label"> Name </label>
         </div>
         
@@ -17,7 +17,7 @@
         <div class="add-an-item">
             <label for="item">Item: </label>
             <select class="dropdown" id="item" name="item_id">
-                <option value=" ">Pick an item</option>
+                <option value="1">Pick an item</option>
                 {% for item in all_items %}
                     <option value="{{ item.id }}">{{ item.name }}</option>
                 {% endfor %}

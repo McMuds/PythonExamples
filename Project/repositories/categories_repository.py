@@ -1,6 +1,5 @@
 from db.run_sql import run_sql
 from models.category import Category
-import pdb
 
 def select_all(): 
     list_of_categories = []
@@ -19,7 +18,6 @@ def select(id):
     return category
 
 def update(category): 
-    # pdb.set_trace()
     sql_string = "UPDATE categories SET name = %s WHERE id = %s"
     values = [category.name, category.id]
     run_sql(sql_string, values)
