@@ -6,15 +6,19 @@
     <h2 class="section-title">Add an Item</h2>
         <form class="add-a-new-thing" action="/items/new" method="post" class="container-row">
             <div class="add-an-item">
-                <label for="name">Item Name: </label>
+                <!-- <label for="name">Item Name: </label>
                 <input type="text" name="item_name" id="name" 
-                    placeholder="Enter the item name" autofocus/>
+                    placeholder="Enter the item name" autofocus/> -->
+                <div class="form__group">
+                    <input type="text" class="form__field_text w-100" name="item_name" id="item_name">
+                    <label for="name" class="form__label">Item Name: </label>
+                </div>
                 <br />
                 <br />
             </div>    
             <div class="add-an-item">
                 <label for="category">Category: </label>
-                <select id="category" name="category_id">
+                <select class="dropdown" id="category" name="category_id">
                     {% for category in all_categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
