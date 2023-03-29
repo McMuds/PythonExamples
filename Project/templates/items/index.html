@@ -10,6 +10,9 @@
         {% endif %}
     </ul>
 </nav>
+{% if order == 4 %}
+    <h2 style="text-align:center">{{ items[0].category.name }}</h2>
+{% endif %}
 <ul>
     {% for item in items %}
         {% set prev_index = items.index(item) -1 %}
