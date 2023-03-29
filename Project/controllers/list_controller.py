@@ -53,7 +53,6 @@ def create_new_list():
     item_id = request.form['item_id']
     qty = request.form['quantity']
     insert_item_to_list(int(list_id), int(item_id), qty)
-    # list_of_items = item_repo.select_all()
     return redirect('/lists')
 
 @shopping_list_blueprint.route('/lists/<list_id>/delete/<item_id>', methods=['post'])

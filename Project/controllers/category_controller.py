@@ -1,5 +1,4 @@
 from flask import render_template, redirect, request
-# from repositories.categories_repository import category_repository as category_repo
 from repositories import categories_repository as category_repo
 from models.category import Category
  

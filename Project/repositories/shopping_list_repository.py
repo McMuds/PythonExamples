@@ -19,7 +19,6 @@ def get_open_lists():
     for row in results:
         selection = selection_repo.get_list_selection(row['id'])
         shopping_list = Shopping_List(row['date_created'], row['name'], row['date_shopped'], selection, row['id'])
-        # print(f"list name: {shopping_list.name}")
         list_of_lists.append(shopping_list)
     
     return list_of_lists
@@ -58,7 +57,7 @@ def get_next_list(id):
     sql_string = "SELECT id FROM shopping_list WHERE id > %s ORDER BY id"
     values = [id]
     result=[]
-    result = run_sql(sql_string, values) #this caused all sorts of issues
+    result = run_sql(sql_string, values)
     if result == None or len(result) == 0:
         return 0
     else:
