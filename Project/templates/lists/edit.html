@@ -17,19 +17,26 @@
 <section>
     <form action="/lists/{{list_id}}/edit/{{item.id}}" method="post" class="container-row">   
         <div>
-            <h2>Update Quantity</h2>
             Update the quantity for {{item.name}} <br /><br />
-            <label for="quantity">Qty: </label>
-            <input type="number" name="quantity" id="quantity" placeholder="Update the qty needed" />
-            {{ item.name }}
+            <!-- <label for="quantity">Qty: </label>
+            <input type="number" name="quantity" id="quantity" placeholder="Update the qty needed" /> -->
+            <div id="centre-input" class="form__group">
+                <input type="number" class="form__field w-100" name="quantity" id="quantity" value="1">
+                <label for="quantity" class="form__label"> Qty </label>
+            </div>
         </div>
         <br/>
         <br/>
-        <div class="form-buttons">
+        <!-- <div class="form-buttons">
             <button type="submit">Update Qty</button>  
+        </div> -->
+        <div class="centre-button">
+            <button class="button2">
+                <span>Update Qty</span>
+            </button>
         </div>
         <br />
-        <br />  
+        <br />
 </section>
 
 {% endblock  %}

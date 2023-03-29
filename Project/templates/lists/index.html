@@ -8,15 +8,15 @@
 {% if lists != None %}
     <ul>
         {% for list in all_lists %}
-        <ul><a href="/lists/{{list.id}}/1">List {{ list.id }}</a> has {{ list.selection|length }}
+        <ul><a href="/lists/{{list.id}}/1">{{ list.name }}</a> has {{ list.selection|length }}
             {% if list.selection|length == 1 %}
                 item, 
             {% else %}
                 items,
             {% endif %}
-            created on {{ list.date_created }}
+            on {{ list.date_created }}
             {% if list.date_shopped != None %}
-                and was shopped on {{ list.date_shopped }}
+                was shopped {{ list.date_shopped }}
             {% endif %}
         </ul>
         {% endfor %}
@@ -32,7 +32,7 @@
         <select class="dropdown" id="shopping_list" name="list_id">
             <option value=" ">select list to be deleted</option>
             {% for list in all_lists %}
-                <option value="{{ list.id }}">list number {{ list.id }}</option>
+                <option value="{{ list.id }}">{{ list.name }}</option>
             {% endfor %}
         </select>
     </div>

@@ -83,6 +83,14 @@ footer p{
     color: #124e78;
 }
 
+.list-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.list-title a{
+    margin-right: 7px;
+}
 .nav-list {
     display: flex;
     flex-direction: row;
@@ -160,10 +168,10 @@ footer p{
     margin-left: 15px;
 }
 
-.thing-listing li span{
+/* .thing-listing li span{
     margin-right: 5px;
     background-color: #ffe3dc;
-}
+} */
 
 .thing-listing li a{
     margin: 10px;
@@ -190,4 +198,19 @@ footer p{
 }
 .shopping li a{
    margin-right: 7px; 
+}
+
+.unicode-checkbox {
+    font-size:xx-large;
+    color: red;
+}
+.unicode-checkbox-ticked {
+    font-size:xx-large;
+    color: green;
+}
+
+.active-checkbox{
+    border:none;
+    background-color: #ffe3dc;
+
 }

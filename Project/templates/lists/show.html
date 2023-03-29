@@ -16,6 +16,7 @@
         <li><a href="/lists/{{list.id}}/2">alphabetical</a></li>
         <li><a href="/lists/{{list.id}}/3">outstanding</a></li>
     </ul>
+    <h3 class="list-title"><a href='/lists/{{list.id}}/edit'>{{list.name}}</a> List</h3>
 </div>
 <ul class="thing-listing">
     {% for sel_item in list.selection|sort(attribute='id') %}
@@ -27,20 +28,20 @@
             {% if active %}
                 <form action="/lists/{{list.id}}/update/{{sel_item.item.id}}">
                     {% if sel_item.selected %}
-                    <button>
-                        <span>&#9989</span>
+                    <button class="active-checkbox">
+                        <span class="unicode-checkbox-ticked">&#9745</span>
                     </button>
                     {% else %}
-                    <button>
-                        <span>&#10060</span>
+                    <button class="active-checkbox">
+                        <span class="unicode-checkbox">&#9744</span>
                     </button>
                     {% endif %} 
                 </form>
             {% else %}
                 {% if sel_item.selected %}
-                    <span>&#9989</span>
+                    <span class="unicode-checkbox-ticked">&#9745</span>
                 {% else %}
-                    <span>&#10060</span>
+                    <span class="unicode-checkbox">&#9744</span>
                 {% endif %} 
             {% endif %}
             <a href="/lists/{{list.id}}/edit/{{sel_item.item.id}}">

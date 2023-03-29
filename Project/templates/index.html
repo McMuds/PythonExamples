@@ -10,8 +10,8 @@
     <form action="/lists/add" method="post" class="container-row">   
         <div>
             <h2>Quick Add</h2>
-            Add an item to any open list 
-            <br /><br />
+            <!-- Add an item to any open list 
+            <br /><br /> -->
             <div class="index-add-row">
                 <label for="item">I need: </label>
                 <select class="dropdown"id="item" name="item_id">
@@ -29,7 +29,7 @@
             <label for="shopping_list">Available shopping lists: </label>
             <select class="dropdown" name="list_id" id="shopping_list">
                 {% for list in open_lists %}
-                    <option value="{{list.id}}">created on {{ list.date_created }}</option>
+                    <option value="{{list.id}}">{{list.name}} from {{ list.date_created }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -52,7 +52,7 @@
     select one of the lists below when you're ready to go shopping
     <ul>
         {% for list in open_lists  %}
-        <li><a href="/lists/shop/{{list.id}}/1">Shopping List</a> with {{ list.selection|length }}
+        <li><a href="/lists/shop/{{list.id}}/1">{{list.name}}</a> with {{ list.selection|length }}
             {% if list.selection|length == 1 %}
             item,
             {% else %}

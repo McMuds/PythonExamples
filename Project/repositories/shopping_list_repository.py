@@ -9,18 +9,21 @@ def select_all():
     results = run_sql(sql_string)
     for row in results:
         selection = selection_repo.get_list_selection(row['id'])
-        shopping_list = Shopping_List(row['date_created'], row['date_shopped'], selection, row['id'])
+        shopping_list = Shopping_List(row['date_created'], row['name'], row['date_shopped'], selection, row['id'])
         list_of_lists.append(shopping_list)
     return list_of_lists
 
 def get_open_lists(): 
+    # pdb.set_trace()
     list_of_lists = []
     sql_string = "SELECT * FROM shopping_list WHERE date_shopped is Null ORDER BY date_created DESC"
     results = run_sql(sql_string)
     for row in results:
         selection = selection_repo.get_list_selection(row['id'])
-        shopping_list = Shopping_List(row['date_created'], row['date_shopped'], selection, row['id'])
+        shopping_list = Shopping_List(row['date_created'], row['name'], row['date_shopped'], selection, row['id'])
+        # print(f"list name: {shopping_list.name}")
         list_of_lists.append(shopping_list)
+    
     return list_of_lists
 
 def select(id,order): 
@@ -28,12 +31,16 @@ def select(id,order):
     values = [id]
     result = run_sql(sql_string, values)
     selection = selection_repo.get_list_selection_ordered(result[0]['id'], order)
-    shopping_list = Shopping_List(result[0]['date_created'], result[0]['date_shopped'], selection, id)
+    shopping_list = Shopping_List(result[0]['date_created'], result[0]['name'], result[0]['date_shopped'], selection, id)
     return shopping_list
 
-def create_new_list():
-    sql_string = "INSERT INTO shopping_list (date_created) VALUES (now()) returning *"
-    results = run_sql(sql_string)
+def create_new_list(name):
+    if name == 'List Name':
+        new_id = get_max_id() + 1
+        name = 'List ' + new_id
+    sql_string = "INSERT INTO shopping_list (date_created, name) VALUES (now(), %s) returning *"
+    values =[name]
+    results = run_sql(sql_string, values)
     list_id = results[0]['id']
     return list_id
 
@@ -60,6 +67,17 @@ def get_next_list(id):
         return result[0]['id']
     
 def delete(id):
-    sql_string = "DELETE FROM shopping_list where id = %s"
+    sql_string = "DELETE FROM shopping_list WHERE id = %s"
     values = [id]
+    run_sql(sql_string, values)
+
+def get_max_id():
+    sql_string = "SELECT MAX(ID) FROM shopping_list"
+    result = run_sql(sql_string)
+    return result
+
+def update(id, name, date_shopped=None):
+    sql_string = "UPDATE shopping_list SET(name, date_shopped) \
+                =(%s, %s) WHERE id = %s"
+    values = [name, date_shopped, id]
     run_sql(sql_string, values)

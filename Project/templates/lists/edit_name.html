@@ -1,0 +1,35 @@
+{% extends 'base.html' %}{% block  content%}  
+<nav>
+    <ul class="nav-list">
+        {% if prev_id!= 0 %}
+            <li><a href="/lists/{{prev_id}}/{{order}}">prev list</a></li>
+        {% endif %}
+        <li><a href="/lists">back</a></li>
+        {% if next_id != 0 %}
+            <li><a href="/lists/{{next_id}}/{{order}}">next list</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<br />
+<br />
+<section>
+    <form action="/lists/{{list.id}}/edit" method="post" class="container-row">   
+        <div>
+            <div class="form__group">
+                <input type="text" class="form__field_text w-100" name="list_name" 
+                    id="list_name" value='{{list.name}}'>
+                <label for="list_name" class="form__label"> Name </label>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="centre-button">
+            <button class="button2">
+                <span>Update Name</span>
+            </button>
+        </div>
+        <br />
+        <br />
+</section>
+
+{% endblock  %}

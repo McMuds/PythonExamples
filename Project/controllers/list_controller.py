@@ -60,8 +60,9 @@ def new_list():
 
 @shopping_list_blueprint.route('/lists/new', methods=['post'])
 def create_new_list():
-    # pdb.set_trace()
-    list_id = list_repo.create_new_list()
+    pdb.set_trace()
+    list_name = request.form['list_name']
+    list_id = list_repo.create_new_list(list_name)
     item_id = request.form['item_id']
     qty = request.form['quantity']
     insert_item_to_list(int(list_id), int(item_id), qty)
@@ -103,3 +104,21 @@ def update_quantity(list_id, item_id):
         selection_repo.update_qty(int(list_id), int(item_id), qty)
 
     return redirect('/lists/' + list_id +'/1')
+
+@shopping_list_blueprint.route('/lists/<id>/edit')
+def edit_name(id):
+    prev_id = list_repo.get_prev_list(int(id))
+    next_id = list_repo.get_next_list(int(id))
+    list=list_repo.select(int(id),1)
+    return render_template('/lists/edit_name.html', list=list, prev_id = prev_id, next_id = next_id)
+
+@shopping_list_blueprint.route('/lists/<id>/edit', methods=['post'])
+def update_name(id):
+    # pdb.set_trace()
+    name = request.form['list_name']
+    if name == None or name == '':
+        pass
+    else:
+        list_repo.update(int(id), name)
+
+    return redirect('/lists/' + id +'/1')
