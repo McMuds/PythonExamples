@@ -1,12 +1,16 @@
 {% extends 'base.html' %}{% block  content%}  
 <nav>
     <ul class="nav-list">
-        {% if prev_id!= 0 %}
-            <li><a href="/lists/{{prev_id}}/{{order}}">prev list</a></li>
+        {% if prev_id == 0 %}
+            <li>first list</li>
+        {% else %}
+            <li><a href="/lists/{{prev_id}}/edit">prev list</a></li>
         {% endif %}
         <li><a href="/lists">back</a></li>
-        {% if next_id != 0 %}
-            <li><a href="/lists/{{next_id}}/{{order}}">next list</a></li>
+        {% if next_id == 0 %}
+            <li>last list</li>
+        {% else %}
+            <li><a href="/lists/{{next_id}}/edit">next list</a></li>
         {% endif %}
     </ul>
 </nav>
