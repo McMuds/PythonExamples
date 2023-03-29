@@ -7,14 +7,16 @@
     <form action="/items/{{item.id}}" method="post" class="container-row">
 
         <div class="add-an-item">
-            <label for="name">Item Name: </label>
-            <input type="text" name="item_name" id="name" value="{{item.name}}"/>
+            <div class="form__group">
+                <input type="text" class="form__field_text w-100" name="item_name" id="name", value={{item.name}}>
+                <label for="item_name" class="form__label">Item Name: </label>
+            </div>
             <br />
             <br />
         </div>    
         <div class="add-an-item">
             <label for="category">Category: </label>
-            <select id="category" name="category_id">
+            <select class="dropdown" id="category" name="category_id">
                 {% for category in all_categories %}
                     <option value="{{ category.id }}"
                     {% if item.category.id== category.id %} selected="selected"{% endif %}>
@@ -24,8 +26,10 @@
         </div>
         <br/>
         <br/>
-        <div class="form-buttons">
-            <button type="submit">Update Item</button>  
+        <div class="centre-button">
+            <button class="button2">
+                <span>Update Item</span>
+            </button>
         </div>
         <br />
         <br />      
