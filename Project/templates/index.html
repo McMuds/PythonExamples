@@ -20,13 +20,17 @@
                         <option value="{{ item.id }}">{{ item.name }}</option>
                     {% endfor %}
                 </select>
-                <label for="quantity">Qty: </label>
-                    <input class="small-int" type="number" name="quantity" id="quantity" value="1"/>
+                <!-- <label for="quantity">Qty: </label>
+                    <input class="small-int" type="number" name="quantity" id="quantity" value="1"/> -->
+                    <div id="centre-input" class="form__group">
+                        <input type="number" class="form__field w-100" name="quantity" id="quantity" value="1">
+                        <label for="quantity" class="form__label"> Qty </label>
+                    </div>            
             </div>
         </div>
         <br />
         <div class="add-an-item"> 
-            <label for="shopping_list">Available shopping lists: </label>
+            <label for="shopping_list">Add to: </label>
             <select class="dropdown" name="list_id" id="shopping_list">
                 {% for list in open_lists %}
                     <option value="{{list.id}}">{{list.name}} from {{ list.date_created }}</option>
